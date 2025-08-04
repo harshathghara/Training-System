@@ -120,6 +120,7 @@ export default function Home() {
                 alt="Students collaborating"
                 width={577.67}
                 height={449.14}
+                
                 className="rounded-lg shadow-2xl object-cover"
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
@@ -142,7 +143,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Row 1 */}
-            <Link href="/enterprise-training" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/enterprise-training" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/corporate_training_icon.png"
@@ -156,7 +159,9 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Custom skill programs for corporate teams to drive performance and innovation across your organization.</p>
             </Link>
 
-            <Link href="/self-paced" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/self-paced" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/self_paced_learning_icon.png"
@@ -170,7 +175,9 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Flexible online modules designed for your schedule and goals, learn at your own pace anywhere.</p>
             </Link>
 
-            <Link href="/internship" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/internship" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/internship_icon.png"
@@ -185,7 +192,9 @@ export default function Home() {
             </Link>
 
             {/* Row 2 */}
-            <Link href="/career-path" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/career-path" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/career_apath_icon.png"
@@ -199,7 +208,9 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Map your future with skill-based learning plans and personalized roadmaps to success.</p>
             </Link>
 
-            <Link href="/mentorship" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/mentorship" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/mentorship_icon.png"
@@ -213,7 +224,9 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Connect with industry experts to guide your personal and professional growth journey.</p>
             </Link>
 
-            <Link href="/career-transition" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/career-transition" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/career_transition_support_icon.png"
@@ -228,7 +241,9 @@ export default function Home() {
             </Link>
 
             {/* Row 3 */}
-            <Link href="/training-for-college" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/training-for-college" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/training_for_college_icon.png"
@@ -242,7 +257,9 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Gain job-ready skills through practical learning and expert mentorship designed for real-world success.</p>
             </Link>
 
-            <Link href="/training-for-school" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/training-for-school" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/training_for_school_icon.png"
@@ -256,7 +273,9 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Nurture young minds with engaging courses in coding, design, and tech — made fun and future-focused.</p>
             </Link>
 
-            <Link href="/others" className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white cursor-pointer">
+            <Link href="/others" className="text-center p-6 rounded-lg bg-white cursor-pointer" style={{
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/others_icon.png"
@@ -287,12 +306,13 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Row 1 - 4 cards */}
-            <div className="text-center p-6 rounded-2xl backdrop-blur-sm border border-white border-opacity-20" style={{
+            <div className="text-center p-6 rounded-2xl backdrop-blur-sm" style={{
               width: '250px',
               height: '202px',
               borderRadius: '16px',
               opacity: 0.95,
-              background: '#FFFFFF1A'
+              background: '#FFFFFF1A',
+              border: '1px solid #FFFFFF33'
             }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
@@ -308,12 +328,13 @@ export default function Home() {
               <p className="text-blue-200" style={{ marginTop: '10px' }}>Learners Onboarded</p>
             </div>
 
-            <div className="text-center p-6 rounded-2xl backdrop-blur-sm border border-white border-opacity-20" style={{
+            <div className="text-center p-6 rounded-2xl backdrop-blur-sm" style={{
               width: '250px',
               height: '202px',
               borderRadius: '16px',
               opacity: 0.95,
-              background: '#FFFFFF1A'
+              background: '#FFFFFF1A',
+              border: '1px solid #FFFFFF33'
             }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
@@ -329,12 +350,13 @@ export default function Home() {
               <p className="text-blue-200" style={{ marginTop: '10px' }}>Mentors from Tech Giants</p>
             </div>
 
-            <div className="text-center p-6 rounded-2xl backdrop-blur-sm border border-white border-opacity-20" style={{
+            <div className="text-center p-6 rounded-2xl backdrop-blur-sm" style={{
               width: '250px',
               height: '202px',
               borderRadius: '16px',
               opacity: 0.95,
-              background: '#FFFFFF1A'
+              background: '#FFFFFF1A',
+              border: '1px solid #FFFFFF33'
             }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
@@ -351,12 +373,13 @@ export default function Home() {
             </div>
 
             
-            <div className="text-center p-6 rounded-2xl backdrop-blur-sm border border-white border-opacity-20" style={{
+            <div className="text-center p-6 rounded-2xl backdrop-blur-sm" style={{
               width: '250px',
               height: '202px',
               borderRadius: '16px',
               opacity: 0.95,
-              background: '#FFFFFF1A'
+              background: '#FFFFFF1A',
+              border: '1px solid #FFFFFF33'
             }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
@@ -374,12 +397,13 @@ export default function Home() {
 
             {/* Row 2 - 3  cards */}
 
-            <div className="text-center p-6 rounded-2xl backdrop-blur-sm border border-white border-opacity-20" style={{
+            <div className="text-center p-6 rounded-2xl backdrop-blur-sm" style={{
               width: '250px',
               height: '202px',
               borderRadius: '16px',
               opacity: 0.95,
-              background: '#FFFFFF1A'
+              background: '#FFFFFF1A',
+              border: '1px solid #FFFFFF33'
             }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
@@ -395,12 +419,13 @@ export default function Home() {
               <p className="text-blue-200" style={{ marginTop: '10px' }}>School Students Enrolled</p>
             </div>
 
-            <div className="text-center p-6 rounded-2xl backdrop-blur-sm border border-white border-opacity-20" style={{
+            <div className="text-center p-6 rounded-2xl backdrop-blur-sm" style={{
               width: '250px',
               height: '202px',
               borderRadius: '16px',
               opacity: 0.95,
-              background: '#FFFFFF1A'
+              background: '#FFFFFF1A',
+              border: '1px solid #FFFFFF33'
             }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
@@ -416,12 +441,13 @@ export default function Home() {
               <p className="text-blue-200" style={{ marginTop: '10px' }}>Partnered Colleges</p>
             </div>
 
-            <div className="text-center p-6 rounded-2xl backdrop-blur-sm border border-white border-opacity-20" style={{
+            <div className="text-center p-6 rounded-2xl backdrop-blur-sm" style={{
               width: '250px',
               height: '202px',
               borderRadius: '16px',
               opacity: 0.95,
-              background: '#FFFFFF1A'
+              background: '#FFFFFF1A',
+              border: '1px solid #FFFFFF33'
             }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
@@ -454,7 +480,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {/* Row 1 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg overflow-hidden" style={{
+              boxShadow: '0px 4px 6px 0px #0000001A, 0px 2px 4px 0px #0000001A'
+            }}>
               <div className="relative">
                 <Image
                   src="/assets/images/course-1.png"
@@ -502,7 +530,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg overflow-hidden" style={{
+              boxShadow: '0px 4px 6px 0px #0000001A, 0px 2px 4px 0px #0000001A'
+            }}>
               <div className="relative">
                 <Image
                   src="/assets/images/course-2.png"
@@ -550,7 +580,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg overflow-hidden" style={{
+              boxShadow: '0px 4px 6px 0px #0000001A, 0px 2px 4px 0px #0000001A'
+            }}>
               <div className="relative">
                 <Image
                   src="/assets/images/course-3.png"
@@ -599,7 +631,9 @@ export default function Home() {
             </div>
 
             {/* Row 2 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg overflow-hidden" style={{
+              boxShadow: '0px 4px 6px 0px #0000001A, 0px 2px 4px 0px #0000001A'
+            }}>
               <div className="relative">
                 <Image
                   src="/assets/images/course-4.png"
@@ -647,7 +681,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg overflow-hidden" style={{
+              boxShadow: '0px 4px 6px 0px #0000001A, 0px 2px 4px 0px #0000001A'
+            }}>
               <div className="relative">
                 <Image
                   src="/assets/images/course-5.png"
@@ -695,7 +731,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-lg overflow-hidden" style={{
+              boxShadow: '0px 4px 6px 0px #0000001A, 0px 2px 4px 0px #0000001A'
+            }}>
               <div className="relative">
                 <Image
                   src="/assets/images/course-6.png"
@@ -769,7 +807,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Row 1 */}
-            <div className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white">
+            <div className="text-center p-6 rounded-lg bg-white" style={{
+              border: '1px solid #F3F4F6',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/structured_curriculum_icon.png"
@@ -783,7 +824,10 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Covers essentials such as supervised, unsupervised, and reinforcement learning, deep learning, natural language processing, and more</p>
             </div>
 
-            <div className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white">
+            <div className="text-center p-6 rounded-lg bg-white" style={{
+              border: '1px solid #F3F4F6',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/hands_on_training_icon.png"
@@ -797,7 +841,10 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Interactive labs and assignments using real-world datasets. Build practical experience through Assignment-based learning and industry simulations.</p>
             </div>
 
-            <div className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white">
+            <div className="text-center p-6 rounded-lg bg-white" style={{
+              border: '1px solid #F3F4F6',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/model_lifecycle_training_icon.png"
@@ -812,7 +859,10 @@ export default function Home() {
             </div>
 
             {/* Row 2 */}
-            <div className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white">
+            <div className="text-center p-6 rounded-lg bg-white" style={{
+              border: '1px solid #F3F4F6',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/role_based_certification_icon.png"
@@ -826,7 +876,10 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Provides specialized tracks for roles like AI/ML Engineer and Data Scientist.</p>
             </div>
 
-            <div className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white">
+            <div className="text-center p-6 rounded-lg bg-white" style={{
+              border: '1px solid #F3F4F6',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/tool_and_platform_exposure_icon.png"
@@ -840,7 +893,10 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">Uses popular technologies such as Python, TensorFlow, PyTorch, and cloud ML services.</p>
             </div>
 
-            <div className="text-center p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow bg-white">
+            <div className="text-center p-6 rounded-lg bg-white" style={{
+              border: '1px solid #F3F4F6',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center justify-center mx-auto mb-4">
                 <Image
                   src="/assets/icons/support_and_community_icon.png"
@@ -858,17 +914,24 @@ export default function Home() {
       </section>
 
       {/* Build Your AI Future Section */}
-      <section id="pricing" className="py-20 bg-white">
+      <div style={{ borderTop: '2px solid #CED4DA', marginTop: '20px' }}></div>
+      <section id="pricing" className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Build Your AI Future—Your Way
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Start free and upgrade as needed. Flexible plans for learners, professionals, and enterprises.
             </p>
+            
           </div>
+        </div>
+      </section>
 
+      {/* Pricing Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Toggle */}
           <div className="flex justify-center mb-12">
             <div className="bg-gray-200 rounded-lg p-1 flex">
@@ -884,7 +947,10 @@ export default function Home() {
           {/* Pricing Cards - First Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {/* Free Plan */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
+            <div className="bg-white rounded-lg p-6 text-center" style={{
+              border: '2px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Free Plan</h3>
               <div className="text-3xl font-bold text-gray-900 mb-2">$0</div>
               <p className="text-sm text-gray-600 mb-4">Perfect for getting started</p>
@@ -900,7 +966,10 @@ export default function Home() {
             </div>
 
             {/* Basic Plan */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
+            <div className="bg-white rounded-lg p-6 text-center" style={{
+              border: '2px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Basic</h3>
               <div className="text-3xl font-bold text-gray-900 mb-2">$28<span className="text-lg text-gray-600">/month</span></div>
               <p className="text-sm text-gray-600 mb-4">Quick entry to AI/ML</p>
@@ -919,9 +988,11 @@ export default function Home() {
             <div className="bg-white rounded-lg p-6 text-center relative" style={{ 
               background: 'linear-gradient(white, white) padding-box, linear-gradient(90deg, #0066FF 0%, #7A4EFF 100%) border-box',
               border: '2px solid transparent',
-              borderRadius: '8px'
+              boxShadow: '0px 20px 25px 0px #0000001A, 0px 8px 10px 0px #0000001A'
             }}>
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-white px-4 py-1 rounded-full text-sm font-bold" style={{
+                background: 'linear-gradient(90deg, #0066FF 0%, #7A4EFF 100%)'
+              }}>
                 Most Popular
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Pro</h3>
@@ -939,7 +1010,10 @@ export default function Home() {
             </div>
 
             {/* AI+ Plan */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
+            <div className="bg-white rounded-lg p-6 text-center" style={{
+              border: '2px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-xl font-bold text-gray-900 mb-2">AI+</h3>
               <div className="text-3xl font-bold text-gray-900 mb-2">$49<span className="text-lg text-gray-600">/month</span></div>
               <p className="text-sm text-gray-600 mb-4">Future-focused AI content</p>
@@ -958,7 +1032,10 @@ export default function Home() {
           {/* Pricing Cards - Second Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Developer Premium */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
+            <div className="bg-white rounded-lg p-6 text-center" style={{
+              border: '2px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Developer Premium</h3>
               <div className="text-3xl font-bold text-gray-900 mb-2">$299<span className="text-lg text-gray-600">/year</span></div>
               <p className="text-sm text-gray-600 mb-4">Expert consultations</p>
@@ -974,7 +1051,10 @@ export default function Home() {
             </div>
 
             {/* Core Tech */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
+            <div className="bg-white rounded-lg p-6 text-center" style={{
+              border: '2px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Core Tech</h3>
               <div className="text-3xl font-bold text-gray-900 mb-2">$38<span className="text-lg text-gray-600">/month</span></div>
               <p className="text-sm text-gray-600 mb-4">Technical domains</p>
@@ -990,7 +1070,10 @@ export default function Home() {
             </div>
 
             {/* Complete */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
+            <div className="bg-white rounded-lg p-6 text-center" style={{
+              border: '2px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Complete</h3>
               <div className="text-3xl font-bold text-gray-900 mb-2">$80<span className="text-lg text-gray-600">/month</span></div>
               <p className="text-sm text-gray-600 mb-4">Most comprehensive</p>
@@ -1006,7 +1089,10 @@ export default function Home() {
             </div>
 
             {/* Corporate */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
+            <div className="bg-white rounded-lg p-6 text-center" style={{
+              border: '2px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Corporate</h3>
               <div className="text-3xl font-bold text-gray-900 mb-2">Custom</div>
               <p className="text-sm text-gray-600 mb-4">Enterprise solutions</p>
@@ -1095,6 +1181,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div style={{ borderTop: '2px solid #CED4DA', marginTop: '20px' }}></div>
 
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
@@ -1136,7 +1223,7 @@ export default function Home() {
                 <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                <svg className="w-5 h-5 text-yellow-300" fill="currentcolor" stroke="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </div>
@@ -1224,11 +1311,11 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="text-white font-bold py-3 px-8 rounded-lg transition-colors hover:bg-red-600" style={{ background: '#EF4444' }}>
-              Start Your Tech Journey Today—Free!
+              Start Your Tech Journey Today
             </button>
-            <Link href="/courses" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
-              Explore Courses
-            </Link>
+                          <Link href="/courses" className="text-white font-bold py-3 px-8 rounded-lg transition-colors" style={{ background: '#FFFFFF33' }}>
+                Explore Courses
+              </Link>
           </div>
         </div>
       </section>
