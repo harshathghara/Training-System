@@ -1,0 +1,19 @@
+{"status":"ready",
+"originalFilePath":"videos\\1- Lets Learn About Langchain-What We Will Learn And Demo Projects - Krish Naik (1080p, h264).mp4","provider":"mux",
+"providerMetadata":{
+    "mux":{
+        "uploadId":"f01wQ1iOa7aFGZ6GrfDXejRJ9ydiSy7Q4mGqr2UWthkU",
+        "assetId":"1d3FSfaKpZaNevbHk1VBe7xXNowNr55cbMx6CdMsaf8",
+        "playbackId":"NOCXyDItnNu4olMa14Ub9ds2jlD7aJWMASw00lP5Bfoo"
+    }
+},
+"createdAt":1754252530101,
+"updatedAt":1754252572937,
+"size":103200605,
+"sources":[{
+    "src":"https://stream.mux.com/NOCXyDItnNu4olMa14Ub9ds2jlD7aJWMASw00lP5Bfoo.m3u8",
+    "type":"application/x-mpegURL"
+}],
+"poster":"https://image.mux.com/NOCXyDItnNu4olMa14Ub9ds2jlD7aJWMASw00lP5Bfoo/thumbnail.webp",
+"blurDataURL":"data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAkAAQAcJZgCsAEO99zrsIAA/v5azDBdNtGXMaVmEBNb++38HJ/nO/pyJcU0bjGJH4Q/tpR6n/Zsux9UkQubhFk/+Zt39wi8akknoLP9AAAA"
+}
