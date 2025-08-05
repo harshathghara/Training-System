@@ -1,10 +1,29 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
+import ProfileImage from '@/components/ui/ProfileImage'
 
 export default function ProfilePage() {
+  const { user, profileImage, setProfileImage } = useAuth()
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        setProfileImage(e.target?.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleEditProfile = () => {
+    fileInputRef.current?.click()
+  }
   return (
     <div className="min-h-screen" style={{ background: '#F9FAFB' }}>
       {/* Header */}
@@ -57,13 +76,7 @@ export default function ProfilePage() {
                 />
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
               </Link>
-              <Image
-                src="/assets/icons/profile_cart.png"
-                alt="User Profile"
-                width={32}
-                height={32}
-                className="rounded-full object-cover"
-              />
+              <ProfileImage size="sm" />
             </div>
           </div>
         </div>
@@ -77,23 +90,48 @@ export default function ProfilePage() {
             {/* User Profile Card */}
             <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
               <div className="mb-4">
-                              <Image
-                src="/assets/icons/profile_cart.png"
-                alt="Sarah Johnson"
-                width={80}
-                height={80}
-                className="rounded-full mx-auto object-cover"
-              />
+                {profileImage ? (
+                  <Image
+                    src={profileImage}
+                    alt={`${user?.first_name || 'User'} ${user?.last_name || ''}`}
+                    width={80}
+                    height={80}
+                    className="rounded-full mx-auto object-cover"
+                  />
+                ) : (
+                  <div className="w-20 h-20 bg-white border-2 border-gray-300 rounded-full mx-auto flex items-center justify-center">
+                    <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                )}
               </div>
-              <h2 className="text-xl font-bold text-gray-900 mb-1">Sarah Johnson</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-1">
+                {user?.first_name && user?.last_name 
+                  ? `${user.first_name} ${user.last_name}`
+                  : user?.first_name 
+                    ? user.first_name 
+                    : 'User'
+                }
+              </h2>
               <p className="text-gray-600 mb-4">AI/ML Student & Developer</p>
-              <div className="space-y-2">
-                <button className="w-full bg-red-600 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center">
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                  Edit Profile
-                </button>
+                              <div className="space-y-2">
+                  <button 
+                    onClick={handleEditProfile}
+                    className="w-full bg-red-600 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center hover:bg-red-700"
+                  >
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    Edit Profile
+                  </button>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleImageUpload}
+                    accept="image/*"
+                    className="hidden"
+                  />
                 <button className="w-full bg-red-600 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center">
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />

@@ -1,22 +1,21 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface User {
-  id: number;
+  id: string;
   email: string;
-  first_name: string;
-  last_name: string;
-  created_at: string;
+  first_name?: string;
+  last_name?: string;
 }
 
 interface AuthContextType {
   user: User | null;
   token: string | null;
-  login: (token: string, user: User) => void;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
-  isAuthenticated: boolean;
-  loading: boolean;
+  profileImage: string | null;
+  setProfileImage: (image: string | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -30,45 +29,82 @@ export const useAuth = () => {
 };
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [profileImage, setProfileImage] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check for existing token and user data on app load
+    // Check for existing token and user data in localStorage
     const storedToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
+    const storedProfileImage = localStorage.getItem('profileImage');
 
     if (storedToken && storedUser) {
-      try {
-        const userData = JSON.parse(storedUser);
-        setToken(storedToken);
-        setUser(userData);
-      } catch (error) {
-        console.error('Error parsing stored user data:', error);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-      }
+      setToken(storedToken);
+      setUser(JSON.parse(storedUser));
     }
-    setLoading(false);
+
+    if (storedProfileImage) {
+      setProfileImage(storedProfileImage);
+    }
   }, []);
 
-  const login = (newToken: string, userData: User) => {
-    setToken(newToken);
-    setUser(userData);
-    localStorage.setItem('token', newToken);
-    localStorage.setItem('user', JSON.stringify(userData));
+  const login = async (email: string, password: string) => {
+    try {
+      // Simulate API call
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+
+      const data = await response.json();
+      
+      const userData: User = {
+        id: data.user.id,
+        email: data.user.email,
+        first_name: data.user.first_name,
+        last_name: data.user.last_name,
+      };
+
+      setUser(userData);
+      setToken(data.token);
+
+      // Store in localStorage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(userData));
+    } catch (error) {
+      console.error('Login error:', error);
+      throw error;
+    }
   };
 
   const logout = () => {
-    setToken(null);
     setUser(null);
+    setToken(null);
+    setProfileImage(null);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('profileImage');
+  };
+
+  const updateProfileImage = (image: string | null) => {
+    setProfileImage(image);
+    if (image) {
+      localStorage.setItem('profileImage', image);
+    } else {
+      localStorage.removeItem('profileImage');
+    }
   };
 
   const value: AuthContextType = {
@@ -76,13 +112,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     token,
     login,
     logout,
-    isAuthenticated: !!token,
-    loading
+    profileImage,
+    setProfileImage: updateProfileImage,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }; 

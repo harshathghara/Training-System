@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Star, Users, Twitter, Instagram, Facebook, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth } from '../../../contexts/AuthContext';
+import ProfileImage from '@/components/ui/ProfileImage';
 
 interface Course {
   id: number;
@@ -21,6 +22,36 @@ interface Course {
 
 const Areta360Homepage = () => {
   const { user } = useAuth();
+  const [showAllCourses, setShowAllCourses] = useState(false);
+  const [showAllCoursesSection1, setShowAllCoursesSection1] = useState(false);
+  const [showAllCoursesSection2, setShowAllCoursesSection2] = useState(false);
+  const [recentlyViewedCourses, setRecentlyViewedCourses] = useState<Course[]>([]);
+  
+  // Load recently viewed courses from localStorage on component mount
+  useEffect(() => {
+    const stored = localStorage.getItem('recentlyViewedCourses');
+    if (stored) {
+      try {
+        setRecentlyViewedCourses(JSON.parse(stored));
+      } catch (error) {
+        console.error('Error parsing recently viewed courses:', error);
+      }
+    }
+  }, []);
+  
+  const handleCourseClick = (clickedCourse: Course) => {
+    setRecentlyViewedCourses(prev => {
+      // Remove the course if it already exists to avoid duplicates
+      const filtered = prev.filter(course => course.id !== clickedCourse.id);
+      // Add the clicked course to the beginning
+      const updated = [clickedCourse, ...filtered].slice(0, 4); // Keep only the 4 most recent
+      
+      // Save to localStorage
+      localStorage.setItem('recentlyViewedCourses', JSON.stringify(updated));
+      
+      return updated;
+    });
+  };
   
   const courses: Course[] = [
     {
@@ -70,12 +101,111 @@ const Areta360Homepage = () => {
       image: "/assets/images/course-img-3.png",
       badge: null,
       color: "orange"
+    },
+    {
+      id: 5,
+      title: "Complete Machine Learning Bootcamp",
+      instructor: "Dr. Sarah Chen",
+      modules: 14,
+      lessons: 95,
+      rating: 4.7,
+      reviews: 1856,
+      image: "/assets/images/course-img-1.png",
+      badge: "Professional Certificate",
+      color: "blue"
+    },
+    {
+      id: 6,
+      title: "Python for Data Science",
+      instructor: "Prof. Michael Rodriguez",
+      modules: 8,
+      lessons: 42,
+      rating: 4.7,
+      reviews: 1856,
+      image: "/assets/images/course-img-2.png",
+      badge: null,
+      color: "yellow"
+    },
+    {
+      id: 7,
+      title: "Deep Learning Specialization",
+      instructor: "Dr. Emma Watson",
+      modules: 20,
+      lessons: 156,
+      rating: 4.8,
+      reviews: 3245,
+      image: "/assets/images/course-img-3.png",
+      badge: null,
+      color: "orange"
+    },
+    {
+      id: 8,
+      title: "Deep Learning Specialization",
+      instructor: "Dr. Emma Watson",
+      modules: 20,
+      lessons: 156,
+      rating: 4.8,
+      reviews: 3245,
+      image: "/assets/images/course-img-3.png",
+      badge: null,
+      color: "orange"
+    },
+    {
+      id: 9,
+      title: "Complete Machine Learning Bootcamp",
+      instructor: "Dr. Sarah Chen",
+      modules: 14,
+      lessons: 95,
+      rating: 4.7,
+      reviews: 1856,
+      image: "/assets/images/course-img-1.png",
+      badge: "Professional Certificate",
+      color: "blue"
+    },
+    {
+      id: 10,
+      title: "Python for Data Science",
+      instructor: "Prof. Michael Rodriguez",
+      modules: 8,
+      lessons: 42,
+      rating: 4.7,
+      reviews: 1856,
+      image: "/assets/images/course-img-2.png",
+      badge: null,
+      color: "yellow"
+    },
+    {
+      id: 11,
+      title: "Deep Learning Specialization",
+      instructor: "Dr. Emma Watson",
+      modules: 20,
+      lessons: 156,
+      rating: 4.8,
+      reviews: 3245,
+      image: "/assets/images/course-img-3.png",
+      badge: null,
+      color: "orange"
+    },
+    {
+      id: 12,
+      title: "Deep Learning Specialization",
+      instructor: "Dr. Emma Watson",
+      modules: 20,
+      lessons: 156,
+      rating: 4.8,
+      reviews: 3245,
+      image: "/assets/images/course-img-3.png",
+      badge: null,
+      color: "orange"
     }
   ];
 
-  const CourseCard = ({ course, showBadge = true }: { course: Course; showBadge?: boolean }) => (
-    <Link href="/course_description">
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer h-full flex flex-col">
+  const CourseCard = ({ course, showBadge = true, onCourseClick }: { course: Course; showBadge?: boolean; onCourseClick?: (course: Course) => void }) => (
+    <Link href="/course_description" onClick={() => onCourseClick?.(course)}>
+      <div 
+        className="bg-white rounded-lg overflow-hidden hover:scale-[1.02] cursor-pointer h-full flex flex-col transition-all duration-300"
+        style={{ boxShadow: '0px 4px 18.7px 0px #00000040' }}
+      >
       <div className="relative h-48">
         <Image
           src={course.image}
@@ -137,35 +267,38 @@ const Areta360Homepage = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-poppins">
       {/* Header */}
-      <header className="text-white" style={{ background: 'linear-gradient(90deg, #0D1F2D 0%, #0066CC 100%)' }}>
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-2">
+      <header className="shadow-sm" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 81.25%)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden" style={{ width: '32px', height: '32px', borderRadius: '8px' }}>
                 <Image
                   src="/assets/icons/deep_mind_icon_blue.png"
-                  alt="DeepMind Logo"
+                  alt="DeepMind Icon"
                   width={32}
                   height={32}
-                  className="w-8 h-8"
+                  className="object-contain"
                 />
-                <div className="flex items-center">
-                  <span className="text-white font-semibold">DeepMind</span>
-                </div>
               </div>
-              
-              <div className="hidden md:flex space-x-6">
-                <Link href="/#explore-upskill" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Choose Goals</Link>
-                <Link href="/#our-impact" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Our Impact</Link>
-                <Link href="/#top-courses" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Top Courses</Link>
-                <Link href="/#why-us" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Why Us</Link>
-                <Link href="/#pricing" className="text-white hover:text-yellow-400 font-medium flex items-center">Price</Link>
-                <Link href="/#community" className="text-white hover:text-yellow-400 font-medium flex items-center">Community</Link>
-                <Link href="/promotions" className="text-white hover:text-yellow-400 font-medium flex items-center">More</Link>
+              <div className="text-2xl font-bold">
+                <span className="text-white">DeepMind</span>
               </div>
             </div>
-            
-            <div className="flex items-center space-x-4">
+
+            {/* Navigation */}
+            <nav className="hidden md:flex space-x-4 items-center ml-4">
+              <Link href="/#explore-upskill" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Choose Goals</Link>
+              <Link href="/#our-impact" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Our Impact</Link>
+              <Link href="/#top-courses" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Top Courses</Link>
+              <Link href="/#why-us" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Why Us</Link>
+              <Link href="/#pricing" className="text-white hover:text-yellow-400 font-medium flex items-center">Price</Link>
+              <Link href="/#community" className="text-white hover:text-yellow-400 font-medium flex items-center">Community</Link>
+              <Link href="/promotions" className="text-white hover:text-yellow-400 font-medium flex items-center">More▾</Link>
+            </nav>
+
+            {/* Login and Sign Up / User and Cart */}
+            <div className="flex items-center space-x-2 ml-4">
               {user ? (
                 // User is logged in - show user and cart icons
                 <>
@@ -179,15 +312,7 @@ const Areta360Homepage = () => {
                     />
                   </Link>
                   <Link href="/profile" className="text-white hover:text-yellow-400 flex items-center">
-                    <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
-                      <Image
-                        src="/assets/icons/m1.png"
-                        alt="User Profile"
-                        width={32}
-                        height={32}
-                        className="object-cover"
-                      />
-                    </div>
+                    <ProfileImage size="sm" />
                   </Link>
                 </>
               ) : (
@@ -201,17 +326,19 @@ const Areta360Homepage = () => {
               )}
             </div>
           </div>
-        </nav>
-        
-        {/* Hero Section */}
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="text-white" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center justify-between">
             <div className="max-w-xl">
-                              <h1 className="text-4xl font-bold mb-4 ml-20 tracking-wide">Learn Your Way, Anytime</h1>
-                <p className="text-white font-bold text-lg ml-20 mt-10 tracking-wide leading-relaxed">
-                  Browse our complete collection of live and self-paced courses built 
-                  by industry experts for learners at every level.
-                </p>
+              <h1 className="text-4xl font-bold mb-4 ml-20 tracking-wide">Learn Your Way, Anytime</h1>
+              <p className="text-white font-bold text-lg ml-20 mt-10 tracking-wide leading-relaxed">
+                Browse our complete collection of live and self-paced courses built 
+                by industry experts for learners at every level.
+              </p>
             </div>
 
             {/* Cleaned Course Icons */}
@@ -246,7 +373,7 @@ const Areta360Homepage = () => {
             </div>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* Search Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -266,32 +393,70 @@ const Areta360Homepage = () => {
       {/* Recently Viewed Products */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 tracking-wide">Recently Viewed Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          {courses.map((course) => (
-            <CourseCard key={course.id} course={course} showBadge={true} />
-          ))}
-        </div>
-        <button className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700">
-          Show 8 more
-        </button>
-      </section>
-
-      {/* Tech Skill Academy Plus Sections */}
-      {[1, 2].map((section) => (
-        <section key={section} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-wide">
-            Explore with a <span className="text-blue-600">Tech Skill Academy</span> Plus Subscription
-          </h2>
+        {recentlyViewedCourses.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            {courses.map((course) => (
-              <CourseCard key={`${section}-${course.id}`} course={course} showBadge={section === 1} />
+            {recentlyViewedCourses.map((course) => (
+              <CourseCard 
+                key={course.id} 
+                course={course} 
+                showBadge={true} 
+                onCourseClick={handleCourseClick}
+              />
             ))}
           </div>
-          <button className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700">
+        ) : (
+          <div className="text-center py-12">
+            <div className="text-gray-500 text-lg mb-4">
+              <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </div>
+            <p className="text-gray-500 text-lg">No recently viewed courses</p>
+            <p className="text-gray-400 text-sm mt-2">Click on any course to see it here</p>
+          </div>
+        )}
+      </section>
+
+      {/* Tech Skill Academy Plus Section 1 */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-wide">
+          Explore with a <span className="text-blue-600">Tech Skill Academy</span> Plus Subscription
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {courses.slice(0, showAllCoursesSection1 ? courses.length : 4).map((course) => (
+            <CourseCard key={`section1-${course.id}`} course={course} showBadge={true} onCourseClick={handleCourseClick} />
+          ))}
+        </div>
+        {!showAllCoursesSection1 && (
+          <button 
+            onClick={() => setShowAllCoursesSection1(true)}
+            className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700"
+          >
             Show 8 more
           </button>
-        </section>
-      ))}
+        )}
+      </section>
+
+      {/* Tech Skill Academy Plus Section 2 */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-wide">
+          Explore with a <span className="text-blue-600">Tech Skill Academy</span> Plus Subscription
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {courses.slice(0, showAllCoursesSection2 ? courses.length : 4).map((course) => (
+            <CourseCard key={`section2-${course.id}`} course={course} showBadge={false} onCourseClick={handleCourseClick} />
+          ))}
+        </div>
+        {!showAllCoursesSection2 && (
+          <button 
+            onClick={() => setShowAllCoursesSection2(true)}
+            className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700"
+          >
+            Show 8 more
+          </button>
+        )}
+      </section>
 
       {/* Footer */}
       <footer className="bg-[#111827] text-white mt-16">

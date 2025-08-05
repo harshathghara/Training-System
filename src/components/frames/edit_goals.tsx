@@ -44,6 +44,12 @@ const EditGoals = () => {
       // Navigate based on selected goal
       if (selectedGoal === 'start-career') {
         router.push('/personal-demo')
+      } else if (selectedGoal === 'change-career') {
+        router.push('/education-demo')
+      } else if (selectedGoal === 'grow-current') {
+        router.push('/work-demo')
+      } else if (selectedGoal === 'explore-topics') {
+        router.push('/interests-demo')
       } else {
         // Navigate to course recommendations for other goals
         router.push('/courses')

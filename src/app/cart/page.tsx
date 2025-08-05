@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import ProfileImage from '@/components/ui/ProfileImage'
 
 export default function CartPage() {
   return (
@@ -58,13 +59,7 @@ export default function CartPage() {
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
               </Link>
                              <Link href="/profile">
-                 <Image
-                   src="/assets/icons/profile_cart.png"
-                   alt="User Profile"
-                   width={32}
-                   height={32}
-                   className="rounded-full object-cover"
-                 />
+                 <ProfileImage size="sm" />
                </Link>
             </div>
           </div>

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useAuth } from '../../contexts/AuthContext'
+import ProfileImage from '@/components/ui/ProfileImage'
 
 export default function CourseDescriptionPage() {
   const { user } = useAuth();
@@ -66,15 +67,7 @@ export default function CourseDescriptionPage() {
                     />
                   </Link>
                   <Link href="/profile" className="text-white hover:text-yellow-400 flex items-center">
-                    <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
-                      <Image
-                        src="/assets/icons/m1.png"
-                        alt="User Profile"
-                        width={32}
-                        height={32}
-                        className="object-cover"
-                      />
-                    </div>
+                    <ProfileImage size="sm" />
                   </Link>
                 </>
               ) : (
