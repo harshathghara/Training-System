@@ -13,6 +13,7 @@ interface AuthContextType {
   user: User | null;
   token: string | null;
   login: (email: string, password: string) => Promise<void>;
+  loginWithToken: (token: string, user: User) => void;
   logout: () => void;
   profileImage: string | null;
   setProfileImage: (image: string | null) => void;
@@ -89,6 +90,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const loginWithToken = (token: string, user: User) => {
+    setToken(token);
+    setUser(user);
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+  };
+
   const logout = () => {
     setUser(null);
     setToken(null);
@@ -111,6 +119,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     user,
     token,
     login,
+    loginWithToken,
     logout,
     profileImage,
     setProfileImage: updateProfileImage,

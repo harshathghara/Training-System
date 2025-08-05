@@ -17,7 +17,7 @@ export default function SignIn() {
   const [showOtpForm, setShowOtpForm] = useState(false);
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
-  const { login } = useAuth();
+  const { login, loginWithToken } = useAuth();
 
   // Check environment variables on component mount
   useEffect(() => {
@@ -63,8 +63,8 @@ export default function SignIn() {
         throw new Error(data.error || 'Sign in failed');
       }
 
-      // Use the auth context to login
-      login(data.token, data.user);
+      // Use the auth context to login with token
+      loginWithToken(data.token, data.user);
 
       // Redirect to personal demo page
       window.location.href = '/personal-demo';
@@ -131,17 +131,16 @@ export default function SignIn() {
         
         // For demo purposes, accept any 6-digit OTP
         const mockUser = {
-          id: 999,
+          id: '999',
           email: email,
           first_name: 'Demo',
-          last_name: 'User',
-          created_at: new Date().toISOString()
+          last_name: 'User'
         };
         
         const mockToken = 'demo-otp-token-' + Date.now();
         
-        // Use the auth context to login
-        login(mockToken, mockUser);
+        // Use the auth context to login with token
+        loginWithToken(mockToken, mockUser);
         
         // Redirect to personal demo page
         window.location.href = '/personal-demo';
