@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: '#F9FAFB' }}>
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

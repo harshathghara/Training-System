@@ -17,6 +17,7 @@ const InternshipForm = () => {
     field_of_study: '',
     preferred_roles: '',
     skills: '',
+    interested_area: '',
     availability_start: '',
     availability_end: '',
     contact_email: '',
@@ -27,7 +28,8 @@ const InternshipForm = () => {
     university: false,
     field_of_study: false,
     preferred_roles: false,
-    skills: false
+    skills: false,
+    interested_area: false
   })
 
   const [consentChecked, setConsentChecked] = useState(false)
@@ -244,12 +246,12 @@ const InternshipForm = () => {
                   {/* Student Name Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Student Name *
+                      Institute Name *
                     </label>
                     <div className="relative">
                       <input
                         type="text"
-                        placeholder="Student Name"
+                        placeholder="Institute Name"
                         value={formData.student_name}
                         onChange={(e) => handleInputChange('student_name', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
@@ -285,26 +287,26 @@ const InternshipForm = () => {
                     </div>
                   </div>
 
-                  {/* University Field */}
+                  {/* Interested Area Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      University *
+                      Interested Area *
                     </label>
                     <div className="relative">
                       <input
                         type="text"
-                        placeholder="University"
-                        value={formData.university}
-                        onChange={(e) => handleInputChange('university', e.target.value)}
+                        placeholder="Interested Area"
+                        value={formData.interested_area}
+                        onChange={(e) => handleInputChange('interested_area', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       />
                       <button
                         type="button"
-                        onClick={() => toggleDropdown('university')}
+                        onClick={() => toggleDropdown('interested_area')}
                         className="absolute inset-y-0 right-0 flex items-center pr-3"
                       >
                         <svg 
-                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.university ? 'rotate-180' : ''}`} 
+                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.interested_area ? 'rotate-180' : ''}`} 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -312,13 +314,13 @@ const InternshipForm = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      {dropdowns.university && (
+                      {dropdowns.interested_area && (
                         <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
                           {interestedAreas.map((area) => (
                             <button
                               key={area}
                               type="button"
-                              onClick={() => selectOption('university', area)}
+                              onClick={() => selectOption('interested_area', area)}
                               className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                             >
                               {area}
@@ -329,49 +331,51 @@ const InternshipForm = () => {
                     </div>
                   </div>
 
-                  {/* Preferred Roles Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Preferred Roles *
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        placeholder="Preferred Roles"
-                        value={formData.preferred_roles}
-                        onChange={(e) => handleInputChange('preferred_roles', e.target.value)}
-                        className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => toggleDropdown('preferred_roles')}
-                        className="absolute inset-y-0 right-0 flex items-center pr-3"
-                      >
-                        <svg 
-                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.preferred_roles ? 'rotate-180' : ''}`} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
+                                                                           {/* Preferred Roles Field */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Mode of Internship *
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          placeholder="Mode of Internship"
+                          value={formData.preferred_roles}
+                          onChange={(e) => handleInputChange('preferred_roles', e.target.value)}
+                          className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => toggleDropdown('preferred_roles')}
+                          className="absolute inset-y-0 right-0 flex items-center pr-3"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      {dropdowns.preferred_roles && (
-                        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
-                          {modeOfInternship.map((mode) => (
-                            <button
-                              key={mode}
-                              type="button"
-                              onClick={() => selectOption('preferred_roles', mode)}
-                              className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
-                            >
-                              {mode}
-                            </button>
-                          ))}
-                        </div>
-                      )}
+                          <svg 
+                            className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.preferred_roles ? 'rotate-180' : ''}`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {dropdowns.preferred_roles && (
+                          <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                            {modeOfInternship.map((mode) => (
+                              <button
+                                key={mode}
+                                type="button"
+                                onClick={() => selectOption('preferred_roles', mode)}
+                                className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                              >
+                                {mode}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+
+                    
 
                 </div>
 
@@ -391,89 +395,75 @@ const InternshipForm = () => {
                     />
                   </div>
 
-                  {/* Graduation Year Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Graduation Year *
-                    </label>
-                    <input
-                      type="number"
-                      min="2020"
-                      max="2030"
-                      placeholder="e.g. 2024"
-                      value={formData.graduation_year}
-                      onChange={(e) => handleInputChange('graduation_year', e.target.value)}
-                      className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                    />
-                  </div>
+                                                                           {/* Previous Experience Field */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Previous Experience / Internship details *
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          placeholder="work exp "
+                          value={formData.skills}
+                          onChange={(e) => handleInputChange('skills', e.target.value)}
+                          className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => toggleDropdown('skills')}
+                          className="absolute inset-y-0 right-0 flex items-center pr-3"
+                        >
+                          <svg 
+                            className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.skills ? 'rotate-180' : ''}`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {dropdowns.skills && (
+                          <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                            {previousExperience.map((exp) => (
+                              <button
+                                key={exp}
+                                type="button"
+                                onClick={() => selectOption('skills', exp)}
+                                className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                              >
+                                {exp}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
 
-                  {/* Previous Experience Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Previous Experience / Internship details *
-                    </label>
-                    <div className="relative">
+                    {/* Location Field */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Location *
+                      </label>
                       <input
                         type="text"
-                        placeholder="Skills"
-                        value={formData.skills}
-                        onChange={(e) => handleInputChange('skills', e.target.value)}
-                        className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        placeholder="e.g. Bangalore, Remote"
+                        value={formData.availability_start}
+                        onChange={(e) => handleInputChange('availability_start', e.target.value)}
+                        className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       />
-                      <button
-                        type="button"
-                        onClick={() => toggleDropdown('skills')}
-                        className="absolute inset-y-0 right-0 flex items-center pr-3"
-                      >
-                        <svg 
-                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.skills ? 'rotate-180' : ''}`} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      {dropdowns.skills && (
-                        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
-                          {previousExperience.map((exp) => (
-                            <button
-                              key={exp}
-                              type="button"
-                              onClick={() => selectOption('skills', exp)}
-                              className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
-                            >
-                              {exp}
-                            </button>
-                          ))}
-                        </div>
-                      )}
                     </div>
-                  </div>
 
-                  {/* Contact Email Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Contact Email *
-                    </label>
-                    <input
-                      type="text"
-                                              placeholder="Contact Email"
-                      value={formData.contact_email}
-                      onChange={(e) => handleInputChange('contact_email', e.target.value)}
-                      className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
+
+                 </div>
               </div>
 
               {/* Contact Phone Field - Full Width */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Contact Phone *
+                  Additional Notes *
                 </label>
                 <textarea
-                  placeholder="Contact Phone"
+                  placeholder="Additional Notes"
                   value={formData.contact_phone}
                   onChange={(e) => handleInputChange('contact_phone', e.target.value)}
                   rows={4}

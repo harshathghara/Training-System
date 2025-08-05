@@ -201,7 +201,7 @@ const CareerTransitionForm = () => {
                   {/* Course Name Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Course Name *
+                      Qualification *
                     </label>
                     <div className="relative">
                       <input

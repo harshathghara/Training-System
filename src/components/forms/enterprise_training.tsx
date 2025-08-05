@@ -351,12 +351,12 @@ const EnterpriseTrainingForm = () => {
                   {/* Training Needs Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Training Needs *
+                      Skills to be upgraded *
                     </label>
                     <div className="relative">
                       <input
                         type="text"
-                        placeholder="Training Needs"
+                        placeholder="skills"
                         value={formData.training_needs}
                         onChange={(e) => handleInputChange('training_needs', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
@@ -395,12 +395,12 @@ const EnterpriseTrainingForm = () => {
                   {/* Budget Range Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Budget Range *
+                      Training Goal *
                     </label>
                     <div className="relative">
                       <input
                         type="text"
-                        placeholder="Budget Range"
+                        placeholder="Training Type"
                         value={formData.budget_range}
                         onChange={(e) => handleInputChange('budget_range', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"

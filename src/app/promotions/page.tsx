@@ -128,7 +128,10 @@ export default function PromotionsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Refer & Earn Card */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex justify-between items-start mb-4">
                 <Image
                   src="/assets/icons/refer_and_earn.png"
@@ -189,7 +192,10 @@ export default function PromotionsPage() {
             </div>
 
             {/* Learn in Groups Card */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <Image
                 src="/assets/icons/people.png"
                 alt="Learn in Groups"
@@ -235,7 +241,10 @@ export default function PromotionsPage() {
             </div>
 
             {/* Partner with Us Card */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <Image
                 src="/assets/icons/partner.png"
                 alt="Partner with Us"
@@ -297,7 +306,10 @@ export default function PromotionsPage() {
             </div>
 
             {/* Corporate Training Programs Card */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 10px 15px 0px #0000001A, 0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex justify-between items-start mb-4">
                 <Image
                   src="/assets/icons/corporate.png"
@@ -359,7 +371,10 @@ export default function PromotionsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Testimonial 1 */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center mb-4">
                 <Image
                   src="/assets/icons/michael johnson.png"
@@ -396,7 +411,10 @@ export default function PromotionsPage() {
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center mb-4">
                 <Image
                   src="/assets/icons/sarah williams.png"
@@ -438,7 +456,10 @@ export default function PromotionsPage() {
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 4px 6px 0px #0000001A'
+            }}>
               <div className="flex items-center mb-4">
                 <Image
                   src="/assets/icons/professor.png"
@@ -487,28 +508,40 @@ export default function PromotionsPage() {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-lg font-bold text-gray-900 mb-3">How does the referral program work?</h3>
               <p className="text-gray-600">
                 When you refer a friend to our platform, both you and your friend receive a 20% discount. You get 20% off your next course, and your friend gets 20% off their first course. Simply share your unique referral link and track your rewards in your dashboard.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-lg font-bold text-gray-900 mb-3">Can I be part of multiple learning groups?</h3>
               <p className="text-gray-600">
                 Yes, you can join multiple learning groups! Each group operates independently, and you can participate in different groups for different courses or skills. The group discounts apply to each group separately based on the number of active members.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-lg font-bold text-gray-900 mb-3">What's included in the college partnership?</h3>
               <p className="text-gray-600">
                 Our college partnership includes custom curriculum aligned with your academic goals, bulk student licenses at discounted rates, co-branded certificates for students, dedicated support, and integration with your existing learning management system.
               </p>
             </div>
 
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="bg-white rounded-lg p-6" style={{
+              border: '1px solid #E5E7EB',
+              boxShadow: '0px 4px 6px 0px #0000001A'
+            }}>
               <h3 className="text-lg font-bold text-gray-900 mb-3">How do corporate plans differ from individual plans?</h3>
               <p className="text-gray-600">
                 Corporate plans include custom learning paths for different departments, progress tracking and reporting dashboard, dedicated account manager, bulk licensing, and enterprise-level support. They're designed to scale with your organization's needs.
