@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "../contexts/AuthContext";
 import GoogleOAuthProviderWrapper from "../contexts/GoogleOAuthProvider";
+import GlobalAuthModal from "../components/layout/GlobalSignupModal";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,6 +26,7 @@ export default function RootLayout({
             <main className="min-h-screen">
               {children}
             </main>
+                            <GlobalAuthModal />
           </AuthProvider>
         </GoogleOAuthProviderWrapper>
       </body>

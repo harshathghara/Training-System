@@ -14,18 +14,24 @@ export default function CourseContentPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="shadow-sm" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 81.25%)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+      <header className="fixed top-0 left-0 right-0 z-[200] shadow-sm" style={{ background: 'linear-gradient(90deg, #0D1F2D 18.75%, #0066CC 100%)' }}>
+        <div className="w-full mx-auto flex px-[44px] pr-[75px] sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4 w-full" style={{
+            width: '98%',
+            margin: 'auto'
+          }}>
+
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden" style={{ width: '32px', height: '32px', borderRadius: '8px' }}>
-                <Image
-                  src="/assets/icons/deep_mind_icon_blue.png"
-                  alt="DeepMind Icon"
-                  width={32}
-                  height={32}
-                  className="object-contain"
+              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                <img 
+                  alt="DeepMind Icon" 
+                  loading="lazy" 
+                  width={32} 
+                  height={32} 
+                  decoding="async" 
+                  className="object-contain" 
+                  src="/_next/image?url=%2Fassets%2Ficons%2Fdeep_mind_icon_blue.png&w=64&q=75"
                 />
               </div>
               <div className="text-2xl font-bold">
@@ -35,49 +41,40 @@ export default function CourseContentPage() {
 
             {/* Navigation */}
             <nav className="hidden md:flex space-x-4 items-center ml-4">
-              <Link href="/#explore-upskill" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Choose Goals</Link>
-              <Link href="/#our-impact" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Our Impact</Link>
-              <Link href="/#top-courses" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Top Courses</Link>
-              <Link href="/#why-us" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Why Us</Link>
-              <Link href="/#pricing" className="text-white hover:text-yellow-400 font-medium flex items-center">Price</Link>
-              <Link href="/#community" className="text-white hover:text-yellow-400 font-medium flex items-center">Community</Link>
-              <Link href="/promotions" className="text-white hover:text-yellow-400 font-medium flex items-center">More▾</Link>
+              <Link href="/#explore-upskill" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Choose Goals</Link>
+              <Link href="/#our-impact" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Our Impact</Link>
+              <Link href="/#top-courses" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Top Courses</Link>
+              <Link href="/#why-us" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Why Us</Link>
+              <Link href="/#pricing" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Price</Link>
+              <Link href="/#community" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Community</Link>
+              <Link href="/promotions" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">More</Link>
             </nav>
 
-            {/* Login and Sign Up / User and Cart */}
-            <div className="flex items-center space-x-2 ml-4">
-              {user ? (
-                // User is logged in - show user and cart icons
-                <>
-                  <Link href="/cart" className="text-white hover:text-yellow-400 flex items-center">
-                    <Image
-                      src="/assets/icons/cart_icon.png"
-                      alt="Cart"
-                      width={24}
-                      height={24}
-                      className="object-contain"
-                    />
-                  </Link>
-                  <Link href="/profile" className="text-white hover:text-yellow-400 flex items-center">
-                    <ProfileImage size="sm" />
-                  </Link>
-                </>
-              ) : (
-                // User is not logged in - show login and signup buttons
-                <>
-                  <Link href="/signin" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Log In</Link>
-                  <Link href="/signup" className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors whitespace-nowrap">
-                    Sign Up
-                  </Link>
-                </>
-              )}
+            {/* Auth Buttons */}
+            <div className="flex items-center ml-4">
+                              <button
+                  data-signin
+                  className="text-white px-4 py-2 rounded-md hover:text-yellow-400 transition-colors"
+                >
+                  Log in
+                </button>
+              <button 
+                data-signup
+                className="text-white bg-[#CB2128] hover:bg-[#a91a1f] px-4 py-2 rounded-md w-[131px] text-center transition-colors ml-0"
+              >
+                Sign Up
+              </button>
             </div>
+
           </div>
         </div>
       </header>
 
     {/* Main Content */}
-       <div className="flex h-screen bg-gray-50">
+       <div className="flex h-screen bg-gray-50 pt-[88px]" style={{
+         width: '95%',
+         marginLeft: '62px'
+       }}>
                           {/* Left Column - Course Content Sidebar */}
                                                                                <div className="w-80 bg-white border-r border-gray-300 flex flex-col min-h-screen">
            {/* Course Content Header */}
@@ -257,7 +254,9 @@ export default function CourseContentPage() {
 
           {/* Video Player */}
           <div className="px-6 mb-6">
-            <MuxVideoPlayer />
+            <div className="rounded-lg h-96 w-full overflow-hidden relative">
+              <MuxVideoPlayer />
+            </div>
           </div>
 
           {/* Transcript Link */}

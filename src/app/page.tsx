@@ -12,110 +12,197 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="shadow-sm" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 81.25%)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ background: 'linear-gradient(90deg, #0D1F2D 18.75%, #0066CC 100%)' }}>
+        <div className="w-full mx-auto flex px-[44px] pr-[75px] sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4 w-full" style={{
+            width: '98%',
+            margin: 'auto'
+          }}>
+
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden" style={{ width: '32px', height: '32px', borderRadius: '8px' }}>
-                <Image
-                  src="/assets/icons/deep_mind_icon_blue.png"
-                  alt="DeepMind Icon"
-                  width={32}
-                  height={32}
-                  className="object-contain"
+              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                <img 
+                  alt="DeepMind Icon" 
+                  loading="lazy" 
+                  width={32} 
+                  height={32} 
+                  decoding="async" 
+                  className="object-contain" 
+                  src="/_next/image?url=%2Fassets%2Ficons%2Fdeep_mind_icon_blue.png&w=64&q=75"
                 />
               </div>
               <div className="text-2xl font-bold">
-                <span className="text-white">DeepMind</span>
+                <span className="text-white" style={{
+                  fontFamily: 'Poppins',
+                  fontWeight: 700,
+                  fontStyle: 'Bold',
+                  fontSize: '20px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%'
+                }}>DeepMind</span>
               </div>
             </div>
 
-            {/* Navigation */}
-            <nav className="hidden md:flex space-x-4 items-center ml-4">
-              <Link href="#explore-upskill" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Choose Goals</Link>
-              <Link href="#our-impact" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Our Impact</Link>
-              <Link href="#top-courses" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Top Courses</Link>
-              <Link href="#why-us" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Why Us</Link>
-              <Link href="#pricing" className="text-white hover:text-yellow-400 font-medium flex items-center">Price</Link>
-              <Link href="#community" className="text-white hover:text-yellow-400 font-medium flex items-center">Community</Link>
-              <Link href="/promotions" className="text-white hover:text-yellow-400 font-medium flex items-center">More</Link>
-            </nav>
+                         {/* Navigation */}
+             <nav className="hidden md:flex space-x-4 items-center ml-4">
+               <a href="#explore-upskill" className="text-white flex items-center whitespace-nowrap" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'Regular',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>Choose Goals</a>
+               <a href="#our-impact" className="text-white flex items-center whitespace-nowrap" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'Regular',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>Our Impact</a>
+               <a href="#top-courses" className="text-white flex items-center whitespace-nowrap" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'Regular',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>Top Courses</a>
+               <a href="#why-us" className="text-white flex items-center whitespace-nowrap" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'Regular',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>Why Us</a>
+               <a href="#pricing" className="text-white flex items-center" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'Regular',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>Price</a>
+               <a href="#community" className="text-white flex items-center" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'Regular',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>Community</a>
+               <a href="/promotions" className="text-white flex items-center" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'Regular',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>More</a>
+             </nav>
 
-            {/* Login and Sign Up / User and Cart */}
-            <div className="flex items-center space-x-2 ml-4">
-              {user ? (
-                // User is logged in - show user and cart icons
-                <>
-                  <Link href="/cart" className="text-white hover:text-yellow-400 flex items-center">
-                    <Image
-                      src="/assets/icons/cart_icon.png"
-                      alt="Cart"
-                      width={24}
-                      height={24}
-                      className="object-contain"
-                    />
-                  </Link>
-                  <Link href="/profile" className="text-white hover:text-yellow-400 flex items-center">
-                    <ProfileImage size="sm" />
-                  </Link>
-                </>
-              ) : (
-                // User is not logged in - show login and signup buttons
-                <>
-                  <Link href="/signin" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Log In</Link>
-                  <Link href="/signup" className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors whitespace-nowrap">
-                    Sign Up
-                  </Link>
-                </>
-              )}
+            {/* Auth Buttons */}
+            <div className="flex items-center ml-4">
+                      <button
+          data-signin
+          className="text-white px-4 py-2 rounded-md hover:text-yellow-400 transition-colors"
+        >
+          Log in
+        </button>
+              <button 
+                data-signup
+                className="text-white bg-[#CB2128] hover:bg-[#a91a1f] px-4 py-2 rounded-md w-[131px] text-center transition-colors ml-0"
+              >
+                Sign Up
+              </button>
             </div>
+
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="text-white py-20" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 81.25%)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
+      <section className="text-white w-full m-0 pt-[120px] pb-[0px] bg-[linear-gradient(270deg,rgb(0,102,204)_0%,rgb(13,31,45)_81.25%)]">
+        <div className="w-full mx-auto px-[71px] sm:px-6 lg:px-8 m-0 pr-[2px]" style={{
+          paddingLeft: '55px',
+          paddingRight: '0'
+        }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start" style={{
+            display: 'flex', justifyContent: 'space-between'
+          }}>
+            
+            {/* Left content */}
             <div>
-              <h1 className="mb-6 leading-tight" style={{
+              <h1 className="mb-6" style={{
                 fontFamily: 'Poppins',
                 fontWeight: 700,
+                fontStyle: 'Bold',
                 fontSize: '48px',
                 lineHeight: '48px',
                 letterSpacing: '0%'
               }}>
-                Launch Your Tech Career with<br />
-                <span>AI-Powered Skills Training</span>
+                Launch Your Tech Career with<br /><span>AI-Powered Skills Training</span>
               </h1>
-              <p className="text-xl mb-8 text-white">
-                Master AI, cloud computing, and cybersecurity with hands-on courses designed to get you hired in India, the US, and the UK.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <button className="text-white font-bold py-3 px-8 rounded-lg transition-colors" style={{ background: '#ED0000' }}>
-                  Start Learning for Free
-                </button>
-                <Link href="/courses" className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-colors" style={{ border: '1px solid #E5E7EB' }}>
+                                                           <div>
+                  <p className="mb-8 text-white" style={{
+                    maxWidth: '581px',
+                    fontFamily: 'Poppins',
+                    fontWeight: 400,
+                    fontStyle: 'normal',
+                    fontSize: '20px',
+                    lineHeight: '28px',
+                    letterSpacing: '0%'
+                  }}>
+                    Master AI, cloud computing, and cybersecurity with hands-on courses designed to get you hired in India, the US, and the UK.
+                  </p>
+                </div>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6" style={{
+                paddingTop: '12px'
+              }}>
+                                 <button className="text-white py-3 px-8 rounded-lg transition-colors bg-[rgb(237,0,0)]" style={{
+                   borderRadius: '6px',
+                   fontFamily: 'Poppins',
+                   fontWeight: 500,
+                   fontStyle: 'normal',
+                   fontSize: '16px',
+                   lineHeight: '100%',
+                   letterSpacing: '0%',
+                   textAlign: 'center'
+                 }}>
+                   Start Learning for Free
+                 </button>
+                <a
+                  href="/courses"
+                  className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-colors border border-gray-200"
+                  style={{
+                    border: 'none'
+                  }}
+                >
                   Explore Courses
-                </Link>
+                </a>
               </div>
-              <p className="text-sm text-white">
-                Join 100,000+ learners mastering AI-era skills.
-              </p>
+                <p className="text-white" style={{
+                 fontFamily: 'Poppins',
+                 fontWeight: 400,
+                 fontStyle: 'normal',
+                 fontSize: '16px',
+                 lineHeight: '24px',
+                 letterSpacing: '0%'
+               }}>Join 100,000+ learners mastering AI-era skills.</p>
             </div>
-
-            {/* Right Image */}
+            
+            {/* Right image */}
             <div className="flex justify-center lg:justify-end items-center">
-              <Image
-                src="/assets/images/land-page-img.png"
+              <img
                 alt="Students collaborating"
-                width={577.67}
-                height={449.14}
-                
-                className="rounded-lg shadow-2xl object-cover"
-                style={{ maxWidth: '100%', height: 'auto' }}
+                loading="lazy"
+                decoding="async"
+                className="rounded-lg shadow-2xl object-cover max-w-[500px] h-[370px]"
+                data-first-enter-image="true"
+                src="/_next/image?url=%2Fassets%2Fimages%2Fland-page-img.png&amp;w=1200&amp;q=75"
               />
             </div>
           </div>
@@ -1361,7 +1448,14 @@ export default function Home() {
                   />
                 </div>
                 <div className="text-2xl font-bold">
-                  <span className="text-white">DeepMind</span>
+                  <span className="text-white" style={{
+                    fontFamily: 'Poppins',
+                    fontWeight: 700,
+                    fontStyle: 'Bold',
+                    fontSize: '20px',
+                    lineHeight: '100%',
+                    letterSpacing: '0%'
+                  }}>DeepMind</span>
                 </div>
               </div>
               <p className="text-white mb-6">

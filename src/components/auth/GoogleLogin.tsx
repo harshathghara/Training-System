@@ -18,7 +18,7 @@ export default function GoogleLogin({
   className = ""
 }: GoogleLoginProps) {
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { loginWithToken } = useAuth();
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async (response) => {
@@ -68,16 +68,26 @@ export default function GoogleLogin({
         console.log('✅ Backend authentication successful:', authData);
 
         // Step 3: Login using auth context with JWT token
-        login(authData.token, authData.user);
+        loginWithToken(authData.token, authData.user);
 
         // Step 4: Call success callback
         if (onSuccess) {
           onSuccess();
         }
 
-        // Step 5: Redirect to personal demo page
-        console.log('🚀 Redirecting to personal demo page...');
-        window.location.href = '/personal-demo';
+        // Step 5: Close modal and redirect after a brief delay
+        // This allows the modal to close smoothly before navigation
+        setTimeout(() => {
+          // Check if user is admin and redirect accordingly
+          if (authData.isAdmin) {
+            console.log('👑 Admin user detected, redirecting to admin portal...');
+            window.location.href = '/admin';
+          } else {
+            // Redirect to personal demo page for regular users
+            console.log('🚀 Redirecting to personal demo page...');
+            window.location.href = '/personal-demo';
+          }
+        }, 500);
 
       } catch (error) {
         console.error('❌ Google login error:', error);

@@ -22,109 +22,201 @@ export default function CourseDescriptionPage() {
   return (
     <div className="min-h-screen">
              {/* Header - Fixed */}
-       <header className="fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 81.25%)' }}>
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{marginLeft:'12px'}}>
-           <div className="flex justify-between items-center py-4">
-             {/* Logo */}
-             <div className="flex items-center">
-               <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
-                 <Image
-                   src="/assets/icons/deep_mind_icon_blue.png"
-                   alt="DeepMind Icon"
-                   width={32}
-                   height={32}
-                   className="object-contain"
-                 />
-               </div>
-               <div className="text-2xl font-bold">
-                 <span className="text-white">DeepMind</span>
-               </div>
-             </div>
+             <header className="fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ background: 'linear-gradient(90deg, #0D1F2D 18.75%, #0066CC 100%)' }}>
+        <div className="w-full mx-auto flex px-[44px] pr-[75px] sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4 w-full" style={{
+            width: '98%',
+            margin: 'auto'
+          }}>
+
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                <img 
+                  alt="DeepMind Icon" 
+                  loading="lazy" 
+                  width={32} 
+                  height={32} 
+                  decoding="async" 
+                  className="object-contain" 
+                  src="/_next/image?url=%2Fassets%2Ficons%2Fdeep_mind_icon_blue.png&w=64&q=75"
+                />
+              </div>
+              <div className="text-2xl font-bold">
+                <span className="text-white">DeepMind</span>
+              </div>
+            </div>
 
             {/* Navigation */}
-            <nav className="hidden md:flex space-x-4 items-center ml-40">
-              <Link href="/#explore-upskill" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Choose Goals</Link>
-              <Link href="/#our-impact" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Our Impact</Link>
-              <Link href="/#top-courses" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Top Courses</Link>
-              <Link href="/#why-us" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Why Us</Link>
-              <Link href="/#pricing" className="text-white hover:text-yellow-400 font-medium flex items-center">Price</Link>
-              <Link href="/#community" className="text-white hover:text-yellow-400 font-medium flex items-center">Community</Link>
-              <Link href="/promotions" className="text-white hover:text-yellow-400 font-medium flex items-center">More▾</Link>
+            <nav className="hidden md:flex space-x-4 items-center ml-4">
+              <Link href="/#explore-upskill" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Choose Goals</Link>
+              <Link href="/#our-impact" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Our Impact</Link>
+              <Link href="/#top-courses" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Top Courses</Link>
+              <Link href="/#why-us" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Why Us</Link>
+              <Link href="/#pricing" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Price</Link>
+              <Link href="/#community" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Community</Link>
+              <Link href="/promotions" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">More</Link>
             </nav>
 
-            {/* Login and Sign Up / User and Cart */}
-            <div className="flex items-center space-x-2 ml-4">
-              {user ? (
-                // User is logged in - show user and cart icons
-                <>
-                  <Link href="/cart" className="text-white hover:text-yellow-400 flex items-center">
-                    <Image
-                      src="/assets/icons/cart_icon.png"
-                      alt="Cart"
-                      width={24}
-                      height={24}
-                      className="object-contain"
-                    />
-                  </Link>
-                  <Link href="/profile" className="text-white hover:text-yellow-400 flex items-center">
-                    <ProfileImage size="sm" />
-                  </Link>
-                </>
-              ) : (
-                // User is not logged in - show login and signup buttons
-                <>
-                  <Link href="/signin" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Log In</Link>
-                  <Link href="/signup" className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors whitespace-nowrap">
-                    Sign Up
-                  </Link>
-                </>
-              )}
+            {/* Auth Buttons */}
+            <div className="flex items-center ml-4">
+                              <button
+                  data-signin
+                  className="text-white px-4 py-2 rounded-md hover:text-yellow-400 transition-colors"
+                >
+                  Log in
+                </button>
+              <button 
+                data-signup
+                className="text-white bg-[#CB2128] hover:bg-[#a91a1f] px-4 py-2 rounded-md w-[131px] text-center transition-colors ml-0"
+              >
+                Sign Up
+              </button>
             </div>
+
           </div>
         </div>
       </header>
 
-                                 {/* Hero Section */}
-      <section style={{ background: 'linear-gradient(90deg, #0D1F2D 16.35%, #0066CC 100%)', height: '272px', paddingRight: '20px' }} className="flex items-center justify-between mt-16 px-4 sm:px-6 lg:px-8">
-          <div className="flex-1 max-w-2xl">
-            <div className="text-white text-left" style={{marginLeft:'100px',width:'100%'}}>
-              <h1 className="mb-6 text-2xl sm:text-3xl lg:text-4xl font-bold" style={{
-                fontFamily: 'Poppins',
-                fontWeight: 600,
-                fontStyle: 'normal',
-                lineHeight: '120%',
-                letterSpacing: '0%',
-                opacity: 1
-              }}>
-                Introduction to Artificial Intelligence
-              </h1>
-              <Link href="/course_content">
-                <button className="bg-white font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors" style={{ color: '#CB2128' }}>
-                  Get Started
-                </button>
-              </Link>
+                                                                                                                                      {/* Hero Section */}
+       <section className="flex items-center justify-between mt-0 px-4 sm:px-6 lg:px-8 pt-[88px]" style={{
+         background: 'linear-gradient(90deg, rgb(13, 31, 45) 16.35%, rgb(0, 102, 204) 100%)',
+         height: '342px',
+         paddingRight: '20px'
+       }}>
+                       <div className="flex-1 max-w-2xl">
+              <div className="text-white text-left" style={{marginLeft:'100px',width:'100%'}}>
+                {/* Navigation Breadcrumbs */}
+                <div className="text-sm text-white mb-4" style={{
+                  marginBottom: '28px',
+                  fontFamily: 'Poppins',
+                  fontWeight: 400,
+                  fontSize: '12px',
+                  lineHeight: '100%',
+                  color: 'rgb(209, 204, 204)'
+                }}>
+                  All Courses {'>'} Short Course {'>'} Artificial Intelligence
+                </div>
+                
+                {/* Course Tags */}
+                <div className="flex gap-3 mb-6" style={{
+                  marginBottom: '7px',
+                  gap: '10px'
+                }}>
+                  <span className="text-white px-3 py-1 rounded text-sm" style={{
+                    fontFamily: 'Poppins',
+                    fontWeight: 500,
+                    fontSize: '14px',
+                    lineHeight: '100%',
+                    color: 'rgb(223, 223, 223)',
+                    border: '1px solid rgb(223, 223, 223)',
+                    padding: '10px',
+                    textAlign: 'center',
+                    width: '112px',
+                    height: '35px',
+                    maxWidth: '112px'
+                  }}>Course</span>
+                  <span className="text-white px-3 py-1 rounded text-sm flex items-center" style={{
+                    fontFamily: 'Poppins',
+                    fontWeight: 500,
+                    fontSize: '14px',
+                    lineHeight: '100%',
+                    color: 'rgb(223, 223, 223)',
+                    border: '1px solid rgb(223, 223, 223)',
+                    padding: '10px',
+                    width: '176px',
+                    justifyContent: 'center',
+                    height: '35px',
+                    maxWidth: '176px'
+                  }}>
+                     <Image
+                       src="/assets/icon/Shape.png"
+                       alt="Star"
+                       width={16}
+                       height={16}
+                       className="w-4 h-4 mr-1"
+                     />
+                     Intermediate
+                   </span>
+                  <span className="text-white px-3 py-1 rounded text-sm flex items-center" style={{
+                    fontFamily: 'Poppins',
+                    fontWeight: 500,
+                    fontSize: '14px',
+                    lineHeight: '100%',
+                    color: 'rgb(223, 223, 223)',
+                    border: '1px solid rgb(223, 223, 223)',
+                    padding: '10px',
+                    width: '176px',
+                    justifyContent: 'center',
+                    height: '35px',
+                    maxWidth: '176px'
+                  }}>
+                     <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                     </svg>
+                     3 Hrs 20Min
+                   </span>
+                </div>
+                
+                <h1 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold" style={{
+                  fontFamily: 'Poppins',
+                  fontWeight: 600,
+                  fontStyle: 'normal',
+                  lineHeight: '100%',
+                  fontSize: '30px'
+                }}>
+                  Introduction to Artificial Intelligence
+                </h1>
+                
+                                 <p className="text-white mb-6" style={{
+                   fontFamily: 'Poppins',
+                   fontWeight: 400,
+                   fontSize: '12px',
+                   lineHeight: '100%'
+                 }}>
+                   Instructor: <span style={{
+                     fontFamily: 'Poppins',
+                     fontWeight: 700,
+                     fontSize: '12px',
+                     lineHeight: '100%'
+                   }}>Dr. Sarah Chen</span>
+                 </p>
+                
+                                 <Link href="/course_content">
+                   <button className="bg-white font-bold hover:bg-gray-100 transition-colors" style={{ 
+                     color: 'rgb(203, 33, 40)',
+                     borderRadius: '4px',
+                     padding: '10px',
+                     width: '193px',
+                     height: '50px',
+                     maxWidth: '193px',
+                     maxHeight: '50px'
+                   }}>
+                     Get Started
+                   </button>
+                 </Link>
+              </div>
             </div>
-          </div>
-          
-                             {/* Hero Image */}
-        <div 
-          className="flex-shrink-0"
-          style={{ 
-            width: '350px',
-            marginLeft: '0px'
-          }}
-        >
-          <Image
-            src="/assets/images/Hero_section_of _course_description.png"
-            alt="Hero Section"
-            width={400}
-            height={160}
-            className="object-contain w-full h-auto"
-            priority
-            style={{ width: '350px', height: 'auto' }}
-          />
-        </div>
-        </section>
+           
+                              {/* Video Player Section */}
+         <div 
+           className="flex-shrink-0"
+           style={{ 
+             width: '350px',
+             marginLeft: '0px'
+           }}
+         >
+           <div className="relative w-full h-48 bg-gray-800 rounded-lg overflow-hidden">
+                                                       <Image
+                 src="/assets/images/Hero_section_of _course_description.png"
+                 alt="Hero Section Course Description"
+                 width={350}
+                 height={192}
+                 className="w-full h-full object-cover"
+               />
+           </div>
+         </div>
+          </section>
 
       {/* Main Content Area */}
       <div 
@@ -431,116 +523,134 @@ export default function CourseDescriptionPage() {
           </section>
         </div>
 
-        {/* Right Column - Course Details Card */}
-        <div 
-          className="w-96 flex-shrink-0 p-4 sticky top-24"
-          style={{
-            paddingTop: '23px',
-            height: 'fit-content'
-          }}
-        >
-          <div className="bg-white rounded-lg shadow-lg border border-gray-200">
-            {/* Top Section with Course Title */}
-            <div className="w-full p-4">
-              <h3 className="text-xl font-bold text-gray-900 text-center">
-                Introduction to Artificial Intelligence
-              </h3>
+                                   {/* Right Column - Course Details Card */}
+          <div 
+            className="w-96 flex-shrink-0 p-4 sticky top-24"
+            style={{
+              paddingTop: '28px',
+              height: 'fit-content'
+            }}
+          >
+            <div className="bg-white rounded-lg shadow-lg border border-gray-200" style={{
+              display: "flex",
+              height: "538px",
+              flexDirection: "column",
+              justifyContent: "center"
+            }}>
+              <div className="w-full p-4" style={{
+                paddingBottom: "0",
+                paddingTop: "0"
+              }}>
+                <h3 className="text-xl font-bold text-gray-900 text-center" style={{
+                  marginBottom: "35px"
+                }}>Introduction to Artificial Intelligence</h3>
+              </div>
+              <div className="p-3 border-b border-gray-200 pt-0">
+  <div className="flex items-center justify-between space-x-2">
+    
+    {/* Rating */}
+    <div className="flex items-center">
+      <img 
+        alt="Star Rating" 
+        loading="lazy" 
+        width={16} 
+        height={16} 
+        className="object-contain flex-shrink-0" 
+        src="/assets/icons/star.png" 
+      />
+      <span className="ml-2 text-gray-900 font-semibold text-sm">4.90</span>
+      <div className="w-0.5 h-6 bg-gray-300 flex-shrink-0 ml-[6px]" />
+    </div>
+
+    {/* Enrolled */}
+    <div className="flex items-center flex-1 justify-end">
+      <img 
+        alt="Enrolled" 
+        loading="lazy" 
+        width={20} 
+        height={20} 
+        className="object-contain flex-shrink-0" 
+        src="/assets/icons/enrolled.png" 
+      />
+      <span className="ml-2 text-gray-600 text-sm">202,451</span>
+      <div className="w-0.5 h-6 bg-gray-300 flex-shrink-0 ml-[7px]" />
+    </div>
+
+    {/* Price */}
+    <div className="flex items-center flex-1 justify-center w-[100px]">
+      <span className="ml-2 text-sm text-[#00C2A8]">₹</span>
+      <span className="ml-2 text-sm text-[#00C2A8]">Free</span>
+      <div className="w-0.5 h-6 bg-gray-300 flex-shrink-0 ml-[6px]" />
+    </div>
+    
+  </div>
+</div>
+
+              <div className="bg-gray-100 p-3 border-b border-gray-200" style={{
+                paddingBottom: "10px"
+              }}>
+                <h4 className="text-xs font-semibold text-gray-500 uppercase text-center">KEY FEATURES OF THIS COURSE</h4>
+              </div>
+              <div className="p-4" style={{
+                paddingBottom: "0",
+                paddingTop: "0"
+              }}>
+                <div className="space-y-3" style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginBottom: "35px",
+                  flexDirection: "column",
+                  marginTop: "12px"
+                }}>
+                  <div className="flex items-start">
+                    <Image
+                      src="/assets/icons/key features.png"
+                      alt="Key Features"
+                      width={16}
+                      height={16}
+                      className="object-contain mr-3 flex-shrink-0 mt-0.5"
+                    />
+                    <span className="text-sm text-gray-700 leading-relaxed">Key Features Of This Course</span>
+                  </div>
+                  <div className="flex items-start">
+                    <Image
+                      src="/assets/icons/own pace.png"
+                      alt="Own Pace"
+                      width={16}
+                      height={16}
+                      className="object-contain mr-3 flex-shrink-0 mt-0.5"
+                    />
+                    <span className="text-sm text-gray-700 leading-relaxed">Learn At Your Own Pace</span>
+                  </div>
+                  <div className="flex items-start">
+                    <Image
+                      src="/assets/icons/unlimited access.png"
+                      alt="Unlimited Access"
+                      width={16}
+                      height={16}
+                      className="object-contain mr-3 flex-shrink-0 mt-0.5"
+                    />
+                    <span className="text-sm text-gray-700 leading-relaxed">Unlimited Access Forever</span>
+                  </div>
+                  <div className="flex items-start">
+                    <Image
+                      src="/assets/icons/certifications.png"
+                      alt="Certifications"
+                      width={16}
+                      height={16}
+                      className="object-contain mr-3 flex-shrink-0 mt-0.5"
+                    />
+                    <span className="text-sm text-gray-700 leading-relaxed">Certification Included</span>
+                  </div>
+                </div>
+                <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors mt-4" style={{
+                  width: "90%",
+                  textAlign: "center",
+                  marginLeft: "22px"
+                }}>Add to Cart</button>
+              </div>
             </div>
-
-             {/* Course Summary Bar */}
-             <div className="p-3 border-b border-gray-200">
-               <div className="flex items-center justify-between space-x-2">
-                 <div className="flex items-center flex-1">
-                   <Image
-                     src="/assets/icons/star.png"
-                     alt="Star Rating"
-                     width={16}
-                     height={16}
-                     className="object-contain flex-shrink-0"
-                   />
-                   <span className="ml-2 text-gray-900 font-semibold text-sm">4.90</span>
-                 </div>
-                 <div className="w-0.5 h-6 bg-gray-300 flex-shrink-0"></div>
-                 <div className="flex items-center flex-1">
-                   <Image
-                     src="/assets/icons/enrolled.png"
-                     alt="Enrolled"
-                     width={20}
-                     height={20}
-                     className="object-contain flex-shrink-0"
-                   />
-                   <span className="ml-2 text-gray-600 text-sm">202,451</span>
-                 </div>
-                 <div className="w-0.5 h-6 bg-gray-300 flex-shrink-0"></div>
-                 <div className="flex items-center flex-1 justify-end">
-                   <Image
-                     src="/assets/icons/free.png"
-                     alt="Free"
-                     width={40}
-                     height={16}
-                     className="object-contain flex-shrink-0"
-                   />
-                 </div>
-               </div>
-             </div>
-
-             {/* Key Features Header */}
-             <div className="bg-gray-100 p-3 border-b border-gray-200">
-               <h4 className="text-xs font-semibold text-gray-500 uppercase text-center">KEY FEATURES OF THIS COURSE</h4>
-             </div>
-
-             {/* Key Features List */}
-             <div className="p-4">
-               <div className="space-y-3">
-                 <div className="flex items-start">
-                   <Image
-                     src="/assets/icons/key features.png"
-                     alt="Key Features"
-                     width={16}
-                     height={16}
-                     className="object-contain mr-3 flex-shrink-0 mt-0.5"
-                   />
-                   <span className="text-sm text-gray-700 leading-relaxed">Key Features Of This Course</span>
-                 </div>
-                 <div className="flex items-start">
-                   <Image
-                     src="/assets/icons/own pace.png"
-                     alt="Own Pace"
-                     width={16}
-                     height={16}
-                     className="object-contain mr-3 flex-shrink-0 mt-0.5"
-                   />
-                   <span className="text-sm text-gray-700 leading-relaxed">Learn At Your Own Pace</span>
-                 </div>
-                 <div className="flex items-start">
-                   <Image
-                     src="/assets/icons/unlimited access.png"
-                     alt="Unlimited Access"
-                     width={16}
-                     height={16}
-                     className="object-contain mr-3 flex-shrink-0 mt-0.5"
-                   />
-                   <span className="text-sm text-gray-700 leading-relaxed">Unlimited Access Forever</span>
-                 </div>
-                 <div className="flex items-start">
-                   <Image
-                     src="/assets/icons/certifications.png"
-                     alt="Certifications"
-                     width={16}
-                     height={16}
-                     className="object-contain mr-3 flex-shrink-0 mt-0.5"
-                   />
-                   <span className="text-sm text-gray-700 leading-relaxed">Certification Included</span>
-                 </div>
-               </div>
-
-               {/* Add to Cart Button */}
-               <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors mt-4">
-                 Add to Cart
-               </button>
-             </div>
           </div>
-        </div>
       </div>
     </div>
   )

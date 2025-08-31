@@ -12,24 +12,23 @@ const EnterpriseTrainingForm = () => {
   
   const [formData, setFormData] = useState({
     company_name: '',
-    team_size: '',
-    training_needs: '',
-    budget_range: '',
-    preferred_format: '',
-    timeline: '',
-    contact_person: '',
-    contact_email: '',
-    contact_phone: ''
+    role_designation: '',
+    department: '',
+    work_experience: '',
+    skills_to_upgrade: '',
+    preferred_tools: '',
+    training_goals: ''
   })
 
   const [consentChecked, setConsentChecked] = useState(false)
 
   const [dropdowns, setDropdowns] = useState({
     company_name: false,
-    training_needs: false,
-    budget_range: false,
-    preferred_format: false,
-    timeline: false
+    department: false,
+    skills_to_upgrade: false,
+    training_goals: false,
+    preferred_tools: false,
+    work_experience: false
   })
 
   const [showSubmitPopup, setShowSubmitPopup] = useState(false)
@@ -128,14 +127,14 @@ const EnterpriseTrainingForm = () => {
     }))
   }
 
-  const toggleDropdown = (dropdown: 'company_name' | 'training_needs' | 'budget_range' | 'preferred_format' | 'timeline') => {
+  const toggleDropdown = (dropdown: 'company_name' | 'department' | 'skills_to_upgrade' | 'training_goals' | 'preferred_tools' | 'work_experience') => {
     setDropdowns(prev => ({
       ...prev,
       [dropdown]: !prev[dropdown]
     }))
   }
 
-  const selectOption = (field: 'company_name' | 'training_needs' | 'budget_range' | 'preferred_format' | 'timeline', value: string) => {
+  const selectOption = (field: 'company_name' | 'department' | 'skills_to_upgrade' | 'training_goals' | 'preferred_tools' | 'work_experience', value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -167,14 +166,12 @@ const EnterpriseTrainingForm = () => {
         },
         body: JSON.stringify({
           company_name: formData.company_name,
-          team_size: formData.team_size,
-          training_needs: formData.training_needs,
-          budget_range: formData.budget_range,
-          preferred_format: formData.preferred_format,
-          timeline: formData.timeline,
-          contact_person: `${user?.first_name || 'User'} ${user?.last_name || ''}`,
-          contact_email: user?.email || 'amit.oct2017@gmail.com', // Use your actual email as fallback
-          contact_phone: '1234567890'
+          role_designation: formData.role_designation,
+          department: formData.department,
+          work_experience: formData.work_experience,
+          skills_to_upgrade: formData.skills_to_upgrade,
+          preferred_tools: formData.preferred_tools,
+          training_goals: formData.training_goals
         })
       })
 
@@ -333,22 +330,51 @@ const EnterpriseTrainingForm = () => {
                     </div>
                   </div>
 
-                                     {/* Team Size Field */}
-                   <div>
-                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                       Team Size *
-                     </label>
-                     <input
-                       type="number"
-                       min="1"
-                       placeholder="Enter number of team members"
-                       value={formData.team_size}
-                       onChange={(e) => handleInputChange('team_size', e.target.value)}
-                       className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                     />
-                   </div>
+                  {/* Department Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Department *
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        placeholder="Department"
+                        value={formData.department}
+                        onChange={(e) => handleInputChange('department', e.target.value)}
+                        className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => toggleDropdown('department')}
+                        className="absolute inset-y-0 right-0 flex items-center pr-3"
+                      >
+                        <svg 
+                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.department ? 'rotate-180' : ''}`} 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {dropdowns.department && (
+                        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                          {departments.map((dept) => (
+                            <button
+                              key={dept}
+                              type="button"
+                              onClick={() => selectOption('department', dept)}
+                              className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                            >
+                              {dept}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
 
-                  {/* Training Needs Field */}
+                  {/* Skills to be Upgraded Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Skills to be upgraded *
@@ -357,17 +383,17 @@ const EnterpriseTrainingForm = () => {
                       <input
                         type="text"
                         placeholder="skills"
-                        value={formData.training_needs}
-                        onChange={(e) => handleInputChange('training_needs', e.target.value)}
+                        value={formData.skills_to_upgrade}
+                        onChange={(e) => handleInputChange('skills_to_upgrade', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       />
                       <button
                         type="button"
-                        onClick={() => toggleDropdown('training_needs')}
+                        onClick={() => toggleDropdown('skills_to_upgrade')}
                         className="absolute inset-y-0 right-0 flex items-center pr-3"
                       >
                         <svg 
-                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.training_needs ? 'rotate-180' : ''}`} 
+                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.skills_to_upgrade ? 'rotate-180' : ''}`} 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -375,13 +401,13 @@ const EnterpriseTrainingForm = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      {dropdowns.training_needs && (
+                      {dropdowns.skills_to_upgrade && (
                         <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
                           {skillsToUpgrade.map((skill) => (
                             <button
                               key={skill}
                               type="button"
-                              onClick={() => selectOption('training_needs', skill)}
+                              onClick={() => selectOption('skills_to_upgrade', skill)}
                               className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                             >
                               {skill}
@@ -392,7 +418,7 @@ const EnterpriseTrainingForm = () => {
                     </div>
                   </div>
 
-                  {/* Budget Range Field */}
+                  {/* Training Goals Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Training Goal *
@@ -401,17 +427,17 @@ const EnterpriseTrainingForm = () => {
                       <input
                         type="text"
                         placeholder="Training Type"
-                        value={formData.budget_range}
-                        onChange={(e) => handleInputChange('budget_range', e.target.value)}
+                        value={formData.training_goals}
+                        onChange={(e) => handleInputChange('training_goals', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       />
                       <button
                         type="button"
-                        onClick={() => toggleDropdown('budget_range')}
+                        onClick={() => toggleDropdown('training_goals')}
                         className="absolute inset-y-0 right-0 flex items-center pr-3"
                       >
                         <svg 
-                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.budget_range ? 'rotate-180' : ''}`} 
+                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.training_goals ? 'rotate-180' : ''}`} 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -419,13 +445,13 @@ const EnterpriseTrainingForm = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      {dropdowns.budget_range && (
+                      {dropdowns.training_goals && (
                         <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
                           {trainingGoals.map((goal) => (
                             <button
                               key={goal}
                               type="button"
-                              onClick={() => selectOption('budget_range', goal)}
+                              onClick={() => selectOption('training_goals', goal)}
                               className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                             >
                               {goal}
@@ -439,19 +465,19 @@ const EnterpriseTrainingForm = () => {
 
                 {/* Right Column */}
                 <div className="space-y-6">
-                  {/* Role / Designation Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Role / Designation *
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Computer Science"
-                      value={formData.preferred_format}
-                      onChange={(e) => handleInputChange('preferred_format', e.target.value)}
-                      className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                    />
-                  </div>
+                                     {/* Role / Designation Field */}
+                   <div>
+                     <label className="block text-sm font-medium text-gray-700 mb-2">
+                       Role / Designation *
+                     </label>
+                     <input
+                       type="text"
+                       placeholder="e.g. Software Engineer, Product Manager"
+                       value={formData.role_designation}
+                       onChange={(e) => handleInputChange('role_designation', e.target.value)}
+                       className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                     />
+                   </div>
 
                   {/* Work Experience Field */}
                   <div>
@@ -462,17 +488,17 @@ const EnterpriseTrainingForm = () => {
                       <input
                         type="text"
                         placeholder="work exp"
-                        value={formData.timeline}
-                        onChange={(e) => handleInputChange('timeline', e.target.value)}
+                        value={formData.work_experience}
+                        onChange={(e) => handleInputChange('work_experience', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       />
                       <button
                         type="button"
-                        onClick={() => toggleDropdown('timeline')}
+                        onClick={() => toggleDropdown('work_experience')}
                         className="absolute inset-y-0 right-0 flex items-center pr-3"
                       >
                         <svg 
-                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.timeline ? 'rotate-180' : ''}`} 
+                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.work_experience ? 'rotate-180' : ''}`} 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -480,13 +506,13 @@ const EnterpriseTrainingForm = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      {dropdowns.timeline && (
+                      {dropdowns.work_experience && (
                         <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
                           {workExperienceOptions.map((exp) => (
                             <button
                               key={exp}
                               type="button"
-                              onClick={() => selectOption('timeline', exp)}
+                              onClick={() => selectOption('work_experience', exp)}
                               className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                             >
                               {exp}
@@ -506,17 +532,17 @@ const EnterpriseTrainingForm = () => {
                       <input
                         type="text"
                         placeholder="preferred tools"
-                        value={formData.preferred_format}
-                        onChange={(e) => handleInputChange('preferred_format', e.target.value)}
+                        value={formData.preferred_tools}
+                        onChange={(e) => handleInputChange('preferred_tools', e.target.value)}
                         className="w-full h-12 px-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       />
                       <button
                         type="button"
-                        onClick={() => toggleDropdown('preferred_format')}
+                        onClick={() => toggleDropdown('preferred_tools')}
                         className="absolute inset-y-0 right-0 flex items-center pr-3"
                       >
                         <svg 
-                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.preferred_format ? 'rotate-180' : ''}`} 
+                          className={`w-5 h-5 text-gray-400 transition-transform ${dropdowns.preferred_tools ? 'rotate-180' : ''}`} 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -524,13 +550,13 @@ const EnterpriseTrainingForm = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      {dropdowns.preferred_format && (
+                      {dropdowns.preferred_tools && (
                         <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
                           {preferredTools.map((tool) => (
                             <button
                               key={tool}
                               type="button"
-                              onClick={() => selectOption('preferred_format', tool)}
+                              onClick={() => selectOption('preferred_tools', tool)}
                               className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                             >
                               {tool}

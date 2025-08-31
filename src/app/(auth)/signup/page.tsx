@@ -6,6 +6,12 @@ import { ArrowLeft } from 'lucide-react';
 import GoogleLogin from '../../../components/auth/GoogleLogin';
 
 export default function SignUp() {
+  const [activeTab, setActiveTab] = useState('signup');
+
+  // Debug: Log activeTab changes
+  useEffect(() => {
+    console.log('🔄 Active tab changed to:', activeTab);
+  }, [activeTab]);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -85,7 +91,7 @@ export default function SignUp() {
         throw new Error(data.error || 'Registration failed');
       }
 
-      setSuccess('Registration successful! You can now sign in.');
+      setSuccess('Registration successful! Redirecting...');
       
       // Clear form
       setFormData({
@@ -97,10 +103,10 @@ export default function SignUp() {
         confirmPassword: ''
       });
 
-      // Redirect to personal demo page after 2 seconds
+      // Redirect to personal demo page after 1.5 seconds
       setTimeout(() => {
         window.location.href = '/personal-demo';
-      }, 2000);
+      }, 1500);
 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Registration failed. Please try again.');
@@ -111,7 +117,7 @@ export default function SignUp() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 flex items-center justify-center p-4">
-      {/* Background Content (Landing Page) */}
+      {/* Background Content (Landing Page) - Always visible */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -148,21 +154,63 @@ export default function SignUp() {
         </div>
       </div>
 
-      {/* Register Modal */}
-      <div className="relative z-10 w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-2xl p-8" style={{ fontFamily: 'Poppins', fontWeight: 500, fontStyle: 'normal', fontSize: '14px', lineHeight: '1', letterSpacing: '0' }}>
+      {/* Loading/Success Overlay - Only show when loading or success */}
+      {(loading || success) && (
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-20">
+          <div className="text-center text-white bg-blue-900/90 p-8 rounded-2xl">
+            {loading && (
+              <>
+                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+                <p className="text-xl">Processing your registration...</p>
+              </>
+            )}
+            {success && (
+              <>
+                <div className="text-6xl mb-4">✅</div>
+                <p className="text-xl">Registration successful!</p>
+                <p className="text-lg text-blue-200 mt-2">Redirecting to your dashboard...</p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Register Modal - Always visible, but hidden during loading and success */}
+      {!loading && !success && (
+        <div className="relative z-30 w-full max-w-md">
+          <div className="bg-white rounded-2xl shadow-2xl p-8" style={{ fontFamily: 'Poppins', fontWeight: 500, fontStyle: 'normal', fontSize: '14px', lineHeight: '1', letterSpacing: '0' }}>
 
           {/* Tabs */}
+          
           <div className="flex mb-6 bg-gray-100 rounded-lg p-1">
-            <Link
-              href="/signin"
-              className="flex-1 py-3 px-4 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            <button
+              onClick={() => {
+                console.log('🖱️ Sign In tab clicked');
+                setActiveTab('signin');
+              }}
+              className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'signin' 
+                  ? 'text-white' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+              style={{
+                backgroundColor: activeTab === 'signin' ? '#CB2128' : 'transparent'
+              }}
             >
               Sign In
-            </Link>
-            <button className="flex-1 py-3 px-4 rounded-md text-sm font-medium text-white transition-colors"
+            </button>
+            <button 
+              onClick={() => {
+                console.log('🖱️ Register tab clicked');
+                setActiveTab('signup');
+              }}
+              className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'signup' 
+                  ? 'text-white' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
               style={{
-                backgroundColor: '#CB2128'
+                backgroundColor: activeTab === 'signup' ? '#CB2128' : 'transparent'
               }}
             >
               Register
@@ -182,8 +230,11 @@ export default function SignUp() {
             </div>
           )}
 
-          {/* Registration Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Registration Form - Show when activeTab is 'signup' */}
+          {activeTab === 'signup' && (
+            <>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
                 Your name (First name)
@@ -303,34 +354,120 @@ export default function SignUp() {
               {loading ? 'Registering...' : 'Register'}
             </button>
           </form>
+            </>
+          )}
 
-          {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
+          {/* Divider - Show when activeTab is 'signup' */}
+          {activeTab === 'signup' && (
+            <>
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-white text-gray-500">or</span>
+                </div>
+              </div>
+
+              {/* Google Login */}
+              <GoogleLogin 
+                onError={(error) => setError(error)}
+                buttonText="Continue with Google"
+              />
+            </>
+          )}
+
+          {/* Signin Form - Show when activeTab is 'signin' */}
+          {activeTab === 'signin' && (
+            <div className="space-y-4">
+              <div className="text-center mb-6">
+                <h3 className="text-lg font-semibold text-gray-900">Welcome Back!</h3>
+                <p className="text-sm text-gray-600">Sign in to your account</p>
+              </div>
+              
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+                <div>
+                  <label htmlFor="signin-email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="signin-email"
+                    placeholder="Enter your email"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="signin-password" className="block text-sm font-medium text-gray-700 mb-1">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="signin-password"
+                    placeholder="Enter your password"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    />
+                    <span className="ml-2 text-sm text-gray-700">Remember me</span>
+                  </label>
+                  <button 
+                    type="button"
+                    className="text-sm text-blue-600 hover:text-blue-700"
+                  >
+                    Forgot password?
+                  </button>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full text-white py-3 rounded-lg font-semibold transition-colors"
+                  style={{ backgroundColor: '#CB2128' }}
+                >
+                  Sign In
+                </button>
+              </form>
+
+              <div className="text-center">
+                <p className="text-sm text-gray-600">
+                  Don't have an account?{' '}
+                  <button 
+                    onClick={() => setActiveTab('signup')}
+                    className="text-red-600 hover:text-red-700 font-medium"
+                  >
+                    Sign up
+                  </button>
+                </p>
+              </div>
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">or</span>
+          )}
+
+          {/* Footer - Show when activeTab is 'signup' */}
+          {activeTab === 'signup' && (
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-600">
+                Already have an account?{' '}
+                <button 
+                  onClick={() => setActiveTab('signin')}
+                  className="text-red-600 hover:text-red-700 font-medium"
+                >
+                  Sign in
+                </button>
+              </p>
             </div>
-          </div>
-
-          {/* Google Login */}
-          <GoogleLogin 
-            onError={(error) => setError(error)}
-            buttonText="Continue with Google"
-          />
-
-          {/* Footer */}
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
-              Already have an account?{' '}
-              <Link href="/signin" className="text-red-600 hover:text-red-700 font-medium">
-                Sign in
-              </Link>
-            </p>
-          </div>
+          )}
         </div>
       </div>
+      )}
     </div>
   );
 } 

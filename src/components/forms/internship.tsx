@@ -384,7 +384,7 @@ const InternshipForm = () => {
                   {/* Field of Study Field */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Field of Study *
+                      Specialization *
                     </label>
                     <input
                       type="text"

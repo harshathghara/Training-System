@@ -11,19 +11,25 @@ export default function PromotionsPage() {
   
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="shadow-sm" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 81.25%)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+             {/* Header */}
+       <header className="fixed top-0 left-0 right-0 z-[200] shadow-sm" style={{ background: 'linear-gradient(90deg, #0D1F2D 18.75%, #0066CC 100%)' }}>
+        <div className="w-full mx-auto flex px-[44px] pr-[75px] sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4 w-full" style={{
+            width: '98%',
+            margin: 'auto'
+          }}>
+
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden" style={{ width: '32px', height: '32px', borderRadius: '8px' }}>
-                <Image
-                  src="/assets/icons/deep_mind_icon_blue.png"
-                  alt="DeepMind Icon"
-                  width={32}
-                  height={32}
-                  className="object-contain"
+              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                <img 
+                  alt="DeepMind Icon" 
+                  loading="lazy" 
+                  width={32} 
+                  height={32} 
+                  decoding="async" 
+                  className="object-contain" 
+                  src="/_next/image?url=%2Fassets%2Ficons%2Fdeep_mind_icon_blue.png&w=64&q=75"
                 />
               </div>
               <div className="text-2xl font-bold">
@@ -33,78 +39,110 @@ export default function PromotionsPage() {
 
             {/* Navigation */}
             <nav className="hidden md:flex space-x-4 items-center ml-4">
-              <Link href="/#explore-upskill" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Choose Goals</Link>
-              <Link href="/#our-impact" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Our Impact</Link>
-              <Link href="/#top-courses" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Top Courses</Link>
-              <Link href="/#why-us" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Why Us</Link>
-              <Link href="/#pricing" className="text-white hover:text-yellow-400 font-medium flex items-center">Price</Link>
-              <Link href="/#community" className="text-white hover:text-yellow-400 font-medium flex items-center">Community</Link>
-              <Link href="/promotions" className="text-white hover:text-yellow-400 font-medium flex items-center">More</Link>
+              <Link href="/#explore-upskill" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Choose Goals</Link>
+              <Link href="/#our-impact" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Our Impact</Link>
+              <Link href="/#top-courses" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Top Courses</Link>
+              <Link href="/#why-us" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Why Us</Link>
+              <Link href="/#pricing" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Price</Link>
+              <Link href="/#community" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Community</Link>
+              <Link href="/promotions" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">More</Link>
             </nav>
 
-            {/* Login and Sign Up / User and Cart */}
-            <div className="flex items-center space-x-2 ml-4">
-              {user ? (
-                // User is logged in - show user and cart icons
-                <>
-                  <Link href="/cart" className="text-white hover:text-yellow-400 flex items-center">
-                    <Image
-                      src="/assets/icons/cart_icon.png"
-                      alt="Cart"
-                      width={24}
-                      height={24}
-                      className="object-contain"
-                    />
-                  </Link>
-                  <Link href="/profile" className="text-white hover:text-yellow-400 flex items-center">
-                    <ProfileImage size="sm" />
-                  </Link>
-                </>
-              ) : (
-                // User is not logged in - show login and signup buttons
-                <>
-                  <Link href="/signin" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Log In</Link>
-                  <Link href="/signup" className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors whitespace-nowrap">
-                    Sign Up
-                  </Link>
-                </>
-              )}
+            {/* Auth Buttons */}
+            <div className="flex items-center ml-4">
+                              <button
+                  data-signin
+                  className="text-white px-4 py-2 rounded-md hover:text-yellow-400 transition-colors"
+                >
+                  Log in
+                </button>
+              <button 
+                data-signup
+                className="text-white bg-[#CB2128] hover:bg-[#a91a1f] px-4 py-2 rounded-md w-[131px] text-center transition-colors ml-0"
+              >
+                Sign Up
+              </button>
             </div>
+
           </div>
         </div>
       </header>
 
       {/* Promotional Banner Section */}
-      <section style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 100%)' }} className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="text-white relative">
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full -mb-16 -ml-16"></div>
-              <h1 className="text-5xl font-bold mb-6 leading-tight relative z-10">
-                Unlock Extra Benefits with Our Promo Plans
-              </h1>
-              <p className="text-xl mb-8 text-white opacity-90 relative z-10">
-                Learn together, grow together - and save while you're at it!
-              </p>
-              <button className="bg-white text-red-600 font-bold py-3 px-8 rounded-lg border border-red-600 hover:bg-gray-100 transition-colors relative z-10">
-                Start Exploring Offers
-              </button>
-            </div>
+      <section style={{ backgroundColor: 'rgb(255, 255, 255)' }}>
+        <section className="py-20 relative pt-[88px]" style={{ 
+          background: 'linear-gradient(270deg, rgb(0, 102, 204) 0%, rgb(13, 31, 45) 100%)',
+          height: '524px'
+        }}>
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8" style={{
+            paddingRight: '0px',
+            paddingLeft: '0px'
+          }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              gap: '74px'
+            }}>
+              {/* Left Content */}
+              <div className="text-white relative" style={{
+                width: '52%',
+                marginRight: '35px'
+              }}>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full -mb-16 -ml-16"></div>
+                <h1 className="text-5xl font-bold mb-6 leading-tight relative z-10">
+                  Unlock Extra Benefits with Our Promo Plans
+                </h1>
+                <p className="text-xl mb-8 text-white opacity-90 relative z-10">
+                  Learn together, grow together - and save while you're at it!
+                </p>
+                <button className="bg-white text-red-600 font-bold py-3 px-8 rounded-lg border border-red-600 hover:bg-gray-100 transition-colors relative z-10">
+                  Start Exploring Offers
+                </button>
+              </div>
 
-            {/* Right Image */}
-            <div className="flex justify-center lg:justify-end items-center">
-              <Image
-                src="/assets/images/promotion.png"
-                alt="Group of people learning together"
-                width={500}
-                height={400}
-                className="rounded-lg object-contain"
-                style={{ maxWidth: '100%', height: 'auto' }}
-              />
+              {/* Right Image */}
+              <div className="flex justify-center lg:justify-end items-center" style={{
+                width: '37%',
+                height: '400px',
+                maxWidth: '500px',
+                minWidth: '500px'
+              }}>
+                <img
+                  src="/assets/images/promotion.png"
+                  alt="Group of people learning together"
+                  loading="lazy"
+                  width={500}
+                  height={400}
+                  decoding="async"
+                  className="rounded-lg object-contain"
+                  style={{ 
+                    height: '400px',
+                    width: '500px',
+                    zIndex: 100
+                  }}
+                />
+              </div>
             </div>
           </div>
-        </div>
+          
+          {/* Wave Image at Bottom */}
+          <div className="absolute bottom-0 left-0 w-full" style={{ zIndex: 0,height: '278px' }}>
+            <img
+              src="/assets/images/wave.png"
+              alt="Wave decoration"
+              loading="lazy"
+              width={1920}
+              height={100}
+              decoding="async"
+              className="w-full h-auto"
+              style={{ 
+                objectFit: 'cover',
+                zIndex: 0,
+                height: '280px'
+              }}
+            />
+          </div>
+        </section>
       </section>
 
       {/* Special Offers Just For You Section */}
@@ -677,6 +715,7 @@ export default function PromotionsPage() {
           </div>
         </div>
       </footer>
+
     </div>
   )
 }

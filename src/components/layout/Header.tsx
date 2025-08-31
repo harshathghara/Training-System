@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   return (
     <header className="bg-[#0D1F2D] h-[72px] flex items-center px-4 md:px-8">
@@ -29,13 +31,29 @@ export default function Header() {
         
         {/* Right Side */}
         <div className="flex items-center space-x-2 md:space-x-4">
-          <Link href="/signin" className="text-white text-base font-medium hover:text-[#00C48C] px-3 py-2">Log In</Link>
-          <Link
-            href="/signup"
-            className="bg-[#00C48C] text-[#0D1F2D] font-semibold px-5 py-2 rounded-lg hover:bg-[#00a97a] transition whitespace-nowrap"
-          >
-            Sign Up Free
-          </Link>
+          {user ? (
+            <>
+              <span className="text-white text-sm hidden md:block">
+                Welcome, {user.first_name || user.email}
+              </span>
+              <button
+                onClick={() => logout()}
+                className="text-white text-base font-medium hover:text-[#00C48C] px-3 py-2"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button data-signin className="text-white text-base font-medium hover:text-[#00C48C] px-3 py-2">Log In</button>
+              <Link
+                href="/signup"
+                className="bg-[#00C48C] text-[#0D1F2D] font-semibold px-5 py-2 rounded-lg hover:bg-[#00a97a] transition whitespace-nowrap"
+              >
+                Sign Up Free
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -63,12 +81,28 @@ export default function Header() {
               </Link>
             ))}
             <div className="pt-4 border-t border-[#E5E7EB]">
-              <Link href="/signin" className="block text-white hover:text-[#00C48C] transition mb-2">
-                Log In
-              </Link>
-              <Link href="/signup" className="block bg-[#00C48C] text-[#0D1F2D] font-semibold px-4 py-2 rounded-lg hover:bg-[#00a97a] transition text-center">
-                Sign Up Free
-              </Link>
+              {user ? (
+                <>
+                  <span className="block text-white text-sm mb-2">
+                    Welcome, {user.first_name || user.email}
+                  </span>
+                  <button
+                    onClick={() => logout()}
+                    className="block w-full text-white hover:text-[#00C48C] transition mb-2 text-left"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button data-signin className="block text-white hover:text-[#00C48C] transition mb-2 text-left">
+                    Log In
+                  </button>
+                  <Link href="/signup" className="block bg-[#00C48C] text-[#0D1F2D] font-semibold px-4 py-2 rounded-lg hover:bg-[#00a97a] transition text-center">
+                    Sign Up Free
+                  </Link>
+                </>
+              )}
             </div>
           </nav>
         </div>

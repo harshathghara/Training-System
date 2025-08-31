@@ -267,18 +267,24 @@ const Areta360Homepage = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-poppins">
       {/* Header */}
-      <header className="shadow-sm" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 81.25%)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ background: 'linear-gradient(90deg, #0D1F2D 18.75%, #0066CC 100%)' }}>
+        <div className="w-full mx-auto flex px-[44px] pr-[75px] sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4 w-full" style={{
+            width: '98%',
+            margin: 'auto'
+          }}>
+
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden" style={{ width: '32px', height: '32px', borderRadius: '8px' }}>
-                <Image
-                  src="/assets/icons/deep_mind_icon_blue.png"
-                  alt="DeepMind Icon"
-                  width={32}
-                  height={32}
-                  className="object-contain"
+              <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                <img 
+                  alt="DeepMind Icon" 
+                  loading="lazy" 
+                  width={32} 
+                  height={32} 
+                  decoding="async" 
+                  className="object-contain" 
+                  src="/_next/image?url=%2Fassets%2Ficons%2Fdeep_mind_icon_blue.png&w=64&q=75"
                 />
               </div>
               <div className="text-2xl font-bold">
@@ -288,86 +294,88 @@ const Areta360Homepage = () => {
 
             {/* Navigation */}
             <nav className="hidden md:flex space-x-4 items-center ml-4">
-              <Link href="/#explore-upskill" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Choose Goals</Link>
-              <Link href="/#our-impact" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Our Impact</Link>
-              <Link href="/#top-courses" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Top Courses</Link>
-              <Link href="/#why-us" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Why Us</Link>
-              <Link href="/#pricing" className="text-white hover:text-yellow-400 font-medium flex items-center">Price</Link>
-              <Link href="/#community" className="text-white hover:text-yellow-400 font-medium flex items-center">Community</Link>
-              <Link href="/promotions" className="text-white hover:text-yellow-400 font-medium flex items-center">More▾</Link>
+              <Link href="/#explore-upskill" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Choose Goals</Link>
+              <Link href="/#our-impact" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Our Impact</Link>
+              <Link href="/#top-courses" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Top Courses</Link>
+              <Link href="/#why-us" className="text-white flex items-center whitespace-nowrap text-base leading-6 font-normal font-[Poppins]">Why Us</Link>
+              <Link href="/#pricing" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Price</Link>
+              <Link href="/#community" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">Community</Link>
+              <Link href="/promotions" className="text-white flex items-center text-base leading-6 font-normal font-[Poppins]">More</Link>
             </nav>
 
-            {/* Login and Sign Up / User and Cart */}
-            <div className="flex items-center space-x-2 ml-4">
-              {user ? (
-                // User is logged in - show user and cart icons
-                <>
-                  <Link href="/cart" className="text-white hover:text-yellow-400 flex items-center">
-                    <Image
-                      src="/assets/icons/cart_icon.png"
-                      alt="Cart"
-                      width={24}
-                      height={24}
-                      className="object-contain"
-                    />
-                  </Link>
-                  <Link href="/profile" className="text-white hover:text-yellow-400 flex items-center">
-                    <ProfileImage size="sm" />
-                  </Link>
-                </>
-              ) : (
-                // User is not logged in - show login and signup buttons
-                <>
-                  <Link href="/signin" className="text-white hover:text-yellow-400 font-medium flex items-center whitespace-nowrap">Log In</Link>
-                  <Link href="/signup" className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors whitespace-nowrap">
-                    Sign Up
-                  </Link>
-                </>
-              )}
+            {/* Auth Buttons */}
+            <div className="flex items-center ml-4">
+                              <button
+                  data-signin
+                  className="text-white px-4 py-2 rounded-md hover:text-yellow-400 transition-colors"
+                >
+                  Log in
+                </button>
+              <button 
+                data-signup
+                className="text-white bg-[#CB2128] hover:bg-[#a91a1f] px-4 py-2 rounded-md w-[131px] text-center transition-colors ml-0"
+              >
+                Sign Up
+              </button>
             </div>
+
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="text-white" style={{ background: 'linear-gradient(270deg, #0066CC 0%, #0D1F2D 100%)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex items-center justify-between">
+      <section className="text-white pt-[88px]" style={{ background: 'linear-gradient(90deg, #0D1F2D 17.79%, #0066CC 100%)', maxHeight: '310px' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" style={{ padding: 0 }}>
+          <div className="flex items-center justify-between" style={{ height: '246px' }}>
             <div className="max-w-xl">
-              <h1 className="text-4xl font-bold mb-4 ml-20 tracking-wide">Learn Your Way, Anytime</h1>
-              <p className="text-white font-bold text-lg ml-20 mt-10 tracking-wide leading-relaxed">
+              <h1 className="text-4xl font-bold mb-4 ml-20 tracking-wide" style={{
+                fontFamily: 'Poppins',
+                fontWeight: 600,
+                fontStyle: 'normal',
+                fontSize: '30px',
+                lineHeight: '100%'
+              }}>Learn Your Way, Anytime</h1>
+              <p className="text-white text-base ml-20 mt-6 tracking-wide leading-relaxed" style={{
+                fontFamily: 'Poppins',
+                fontWeight: 400,
+                fontStyle: 'normal',
+                fontSize: '16px',
+                lineHeight: '150%',
+                opacity: 0.9
+              }}>
                 Browse our complete collection of live and self-paced courses built 
                 by industry experts for learners at every level.
               </p>
             </div>
-
-            {/* Cleaned Course Icons */}
-            <div className="hidden lg:block relative w-80 h-80 mr-15">
-              <div className="absolute top-0 right-40 ">
+            <div className="hidden lg:block relative w-80 h-80 mr-15" style={{ height: '243px' }}>
+              <div className="absolute top-0 right-40" style={{ height: '78px' }}>
                 <Image
                   src="/assets/icons/course-icon-1.png"
                   alt="Course Icon 1"
                   width={64}
                   height={64}
                   className="w-16 h-16"
+                  style={{ maxWidth: '56px', maxHeight: '78px', objectFit: 'contain' }}
                 />
               </div>
-              <div className="absolute top-20 right-14">
+              <div className="absolute top-20 right-14" style={{ top: '62px', left: '177px', height: '78px', width: '56px' }}>
                 <Image
                   src="/assets/icons/course-icon-2.png"
                   alt="Course Icon 2"
                   width={72}
                   height={72}
                   className="w-18 h-18"
+                  style={{ maxWidth: '56px', maxHeight: '78px', objectFit: 'contain' }}
                 />
               </div>
-              <div className="absolute bottom-8 right-32">
+              <div className="absolute bottom-8 right-32" style={{ left: '93px', bottom: '49px', height: '78px' }}>
                 <Image
                   src="/assets/icons/course-icon-3.png"
                   alt="Course Icon 3"
                   width={80}
                   height={80}
                   className="w-20 h-20"
+                  style={{ objectFit: 'contain', maxWidth: '56px', maxHeight: '78px' }}
                 />
               </div>
             </div>
@@ -377,14 +385,33 @@ const Areta360Homepage = () => {
 
       {/* Search Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="relative">
+        <div className="relative border border-gray-300 rounded-lg">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
             placeholder="Your career goal is to grow in your role as a UI / UX Designer / Developer"
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            className="w-full pl-10 pr-32 py-3 focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            style={{
+              width: '52%',
+              paddingRight: '0'
+            }}
           />
-          <Link href="/edit-goals" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-blue-600 hover:text-blue-700">
+          <Link 
+            href="/edit-goals" 
+            className="absolute right-20 top-1/2 transform -translate-y-1/2"
+            style={{
+              fontFamily: 'Poppins',
+              fontWeight: 500,
+              fontStyle: 'normal',
+              fontSize: '18px',
+              lineHeight: '36px',
+              color: 'rgb(0, 102, 255)',
+              textDecoration: 'underline',
+              textUnderlineOffset: '2px',
+              right: '499px',
+              position: 'static'
+            }}
+          >
             Edit goal
           </Link>
         </div>
@@ -392,7 +419,15 @@ const Areta360Homepage = () => {
 
       {/* Recently Viewed Products */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 tracking-wide">Recently Viewed Products</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 tracking-wide" style={{
+          fontFamily: 'Poppins',
+          fontWeight: 500,
+          fontStyle: 'normal',
+          fontSize: '30px',
+          lineHeight: '36px',
+          letterSpacing: '0%',
+          color: '#434343'
+        }}>Recently Viewed Products</h2>
         {recentlyViewedCourses.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             {recentlyViewedCourses.map((course) => (
@@ -420,8 +455,24 @@ const Areta360Homepage = () => {
 
       {/* Tech Skill Academy Plus Section 1 */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-wide">
-          Explore with a <span className="text-blue-600">Tech Skill Academy</span> Plus Subscription
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-wide" style={{
+          fontFamily: 'Poppins',
+          fontWeight: 500,
+          fontStyle: 'normal',
+          fontSize: '30px',
+          lineHeight: '36px',
+          letterSpacing: '0%',
+          color: '#434343'
+        }}>
+          Explore with a <span style={{
+            fontFamily: 'Poppins',
+            fontWeight: 700,
+            fontStyle: 'normal',
+            fontSize: '30px',
+            lineHeight: '36px',
+            letterSpacing: '0%',
+            color: '#434343'
+          }}>Tech Skill Academy</span> Plus Subscription
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {courses.slice(0, showAllCoursesSection1 ? courses.length : 4).map((course) => (
@@ -440,13 +491,29 @@ const Areta360Homepage = () => {
 
       {/* Tech Skill Academy Plus Section 2 */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-wide">
-          Explore with a <span className="text-blue-600">Tech Skill Academy</span> Plus Subscription
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-wide" style={{
+          fontFamily: 'Poppins',
+          fontWeight: 500,
+          fontStyle: 'normal',
+          fontSize: '30px',
+          lineHeight: '36px',
+          letterSpacing: '0%',
+          color: '#434343'
+        }}>
+          Explore with a <span style={{
+            fontFamily: 'Poppins',
+            fontWeight: 700,
+            fontStyle: 'normal',
+            fontSize: '30px',
+            lineHeight: '36px',
+            letterSpacing: '0%',
+            color: '#434343'
+          }}>Tech Skill Academy</span> Plus Subscription
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          {courses.slice(0, showAllCoursesSection2 ? courses.length : 4).map((course) => (
-            <CourseCard key={`section2-${course.id}`} course={course} showBadge={false} onCourseClick={handleCourseClick} />
-          ))}
+                      {courses.slice(0, showAllCoursesSection2 ? courses.length : 4).map((course) => (
+              <CourseCard key={`section2-${course.id}`} course={course} showBadge={true} onCourseClick={handleCourseClick} />
+            ))}
         </div>
         {!showAllCoursesSection2 && (
           <button 
